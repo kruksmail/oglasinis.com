@@ -1,0 +1,171 @@
+<?php
+	
+	echo '<?xml version="1.0" encoding="UTF-8" ?>';
+	echo $this->doctype();
+?>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+	<?php echo $this->headMeta(); ?>
+	<?php echo $this->headTitle(); ?>
+	<?php echo $this->headStyle(); ?>
+	<?php echo $this->headLink(); ?>
+	<?php echo $this->headScript(); ?>
+<style type="text/css">
+body {
+	font-size:10px;
+	background: #fff;	
+}
+
+*{
+	margin: 0;
+	padding: 0;
+}
+input{
+	width:150px;
+	
+}
+ul.errors{
+	padding: 5px 0 5px 25px;
+	color: #ff0000;
+}
+dt, dd{
+	margin:5px;
+}
+a{
+	text-decoration:none;
+}
+
+a :hover{
+	text-decoration:underline;
+}
+
+p{
+	margin: 0em;
+	font-size: 12px;
+}
+#pageWrapper {
+	background: #eee;
+	width: 100em;
+	margin: 0 auto;
+	padding: 0;
+	text-align:center;
+}
+
+#header {
+	height: 15em;
+	padding: 5px;
+	color:#00f;
+	text-align:center;
+	background: #eee;
+	border:0;
+	
+}
+
+#main {
+	float:left;
+	background-color: #eee;
+	min-height: 40em;
+	width:90em;
+	margin: 0 auto;
+	padding: 2em 5em;
+	border-top: #aaa 1px solid;
+	text-align:left;
+}
+#main form{
+	
+}
+
+.loginForm
+{
+	font-size:12px;
+	text-align:left;
+	margin: .5em auto;
+	padding: 10px 20px;
+	width:220px;
+	min-height:150px;
+	background-color: #fff;
+	border: red 1px solid;
+	-moz-border-radius: 5px;
+}
+.loginForm dt label.required:before{
+	content: "* ";
+	color: #ff0000;
+}
+
+
+#footer {
+	margin: 0 0 0 0;
+	padding .5em;
+	background-color: #fff;
+	clear: both;
+	height: 5em;
+	border-top: #aaa 1px solid;
+}
+
+.mainNav{
+	float:right;
+	width:95%;
+	height:45px;
+	margin: 0 .5em;
+}
+
+.mainNav ul{
+	float:right;
+	margin:.5em;
+	margin-right:5em;
+	border-top: 1px solid #aaa;
+}
+.mainNav li{
+	float:left;
+	display:block;
+	list-style:none;
+	width:80px;
+	height:20px;
+}
+
+.mainNav a{
+	float:left;
+	padding:10px 0px;
+	margin:0px;
+	width:80px;
+	height:20px;
+	font-size:14px;
+	text-decoration:none;
+	text-align:center;
+}
+#mainNav li a{
+	
+}
+.mainNav a:HOVER
+{
+	text-decoration:underline;
+}
+</style>
+</head>
+<body>
+	<div id="pageWrapper">
+	<div id="header">
+		<h1><a href="<?php echo $this->baseUrl(); ?>/">Početna</a></h1>
+	</div>
+
+	<div id="main">
+	<div class="loginForm">
+		<?php 
+				echo $this->layout()->content;
+			?>
+			&nbsp
+	</div>
+	</div>
+	<div id="footer">
+	<div class="footer_kruks">
+		<p style="color:blue; text-align: center; font-style: italic;">
+		<a style="text-decoration:none;" href="<?php echo $this->baseUrl(); ?>"><em>Početna</em></a>
+		<br /><em style="color:#000; font-size:10px;">Design by</em> 
+		<a style="color:#00f; font-size:10px;margin:0;" href="http://www.kruksoft.com">Kruksoft</a>
+		</p>
+	</div>	
+	</div>
+</div>
+</body>
+</html>

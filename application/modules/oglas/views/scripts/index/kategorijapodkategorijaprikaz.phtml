@@ -1,0 +1,42 @@
+
+<h1><?php
+echo "Oglasi Niš&nbsp;-&nbsp;".$this->kategorija . "&nbsp;-&nbsp;" . $this->podkategorija;
+
+?></h1>
+
+
+<?php
+$dateTemp = new DateTime ( "", new DateTimeZone ( 'Europe/Belgrade' ) );
+$date = strtotime ( "+0 day", strtotime ( date ( $dateTemp->format ( 'd-m-Y' ) ) ) );
+$datum = date ( "Y-m-d", $date );
+if ($this->paginator->count () > 0) {
+	?>
+<div id="formaKriterijumi_Oglas">
+<?php
+	echo $this->searchForm;
+	
+	?></div>
+<?php
+	echo $this->partialLoop ( 'partials/_page-oglasiprikaz.phtml', $this->paginator );
+	echo $this->paginationControl ( $this->paginator, 'Sliding', 'partials/_page-paginationcontrol.phtml' );
+
+} else {
+	?>
+	<div class="formaKriterijumi_Oglas">
+<?php
+	echo $this->searchForm;
+	
+	?></div>
+	<br>
+<?php if($_POST){?>
+<h2>Nema oglasa za izabrane kriterijume</h2>
+<?php }else{?>
+<h2>Nema unetih oglasa
+<a href='<?php
+	echo $this->baseUrl ( 'oglas/unosoglasa/ ' );
+	?>'> DODAJ OGLAS </a></h2><?php
+   }
+}
+?>
+
+

@@ -1,0 +1,19 @@
+<?php 
+$this->layout()->nav = $this->action('index','index','kategorija',
+array('kategorija'=> $this->kategorija, 'podkategorija' => $this->podkategorija));
+
+$provera = $this->action('provera','index','kategorija',
+array('kategorija'=> $this->kategorija, 'podkategorija' => $this->podkategorija));
+
+if($provera != NULL)
+{
+	echo $provera;
+}
+else
+{
+
+	echo $this->action('index','index','oglas',
+	array('kategorija'=> $this->kategorija, 'podkategorija' => $this->podkategorija, 'oglas' => $this->oglas, 'page' => $this->page));
+}
+?>
+

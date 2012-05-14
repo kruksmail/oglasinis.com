@@ -1,0 +1,85 @@
+<h3>Podkategorije </h3>
+<p><a href='<?php echo $this->baseUrl(); ?>/kategorija/edit/createpodkategorija'>Kreiraj novu podkategoriju</a></p>
+<?php 
+if($this->podkategorije != null)
+{ 
+?>
+
+<style>
+<!--
+.podkategorija
+{
+	margin:10px;
+	padding:5px;
+	font-size:12px;
+}
+.podkategorija th{
+	border-top:1px solid black;
+	border-left:1px solid black;
+	border-bottom:1px solid black;
+	background:#ccc;
+	padding:5px;
+}
+.podkategorija td{
+	border-left:1px solid black;
+	border-bottom:1px solid black;
+	padding:5px;
+}
+.podkategorija a{
+	font-style:italic;
+	margin:5px 10px;
+}
+-->
+</style>
+<table class='podkategorija' cellpadding='5' cellspacing='0'>
+	<tr>
+		<th>Podkategorija</th>
+		<th>Kategorija</th>
+		<th style="border-right:1px solid black;">Opcije</th>
+	</tr>
+<?php
+	foreach($this->podkategorije as $podkategorija)
+	{
+?>
+<tr>
+<?php
+		if($podkategorija->kategorija === NULL)
+		{
+			echo "<td style='color:red;'>$podkategorija->label</td>
+			<td style='color:red;'>Nedefinisano</td>";  
+		}
+		else
+		{
+			$kat = $this->kategorije->getKategorijeById($podkategorija->kategorija);
+			if($kat !== NULL)
+			{
+				echo "<td>$podkategorija->label</td>
+				<td>$kat->name</td>";  
+			}
+			else
+			{
+				echo "<td style='color:red;'>$podkategorija->label</td>
+				<td style='color:red;'>Nedefinisano</td>";  
+			}
+		}
+?>
+	<td style="border-right:1px solid black;">
+	<a href='<?php echo $this->baseUrl(); ?>/kategorija/edit/podkategorija/id/<?php echo $podkategorija->id; ?>'>Izmeni</a>
+	<a href='<?php echo $this->baseUrl(); ?>/kategorija/edit/deletepodkategorija/id/<?php echo $podkategorija->id; ?>'>Obriši</a>
+	</td>	
+</tr>
+<?php 
+	}
+?>
+	
+</table>
+<?php 
+}
+else
+{
+?>
+<p>Nema podkategorija.</p>
+
+<?php 
+}
+?>

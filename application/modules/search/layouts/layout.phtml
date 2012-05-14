@@ -1,0 +1,198 @@
+<?php
+
+echo '<?xml version="1.0" encoding="UTF-8" ?>';
+echo $this->doctype ();
+?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+
+<?php
+$this->loadSkin ( $this->skin );
+?>
+	<?php
+	echo $this->headMeta ();
+	?>
+	<?php
+	echo $this->headTitle ();
+	?>
+	<?php
+	echo $this->headStyle ();
+	?>
+	<?php
+	echo $this->headLink ();
+	?>
+	
+	<link rel="shortcut icon" href="/favicon.ico" type="image/ico" />
+<?php
+$this->headScript ()->prependFile ( $this->baseUrl ( '/jquery/jquery.js', 'text/javascript' ) );
+$this->headScript ()->prependFile ( $this->baseUrl ( '/jquery/jquery.lightbox-0.5.js', 'text/javascript' ) );
+?>
+</head>
+<body>
+<div id="pageWrapper">
+<div id="header">
+<h1><a href="<?php
+echo $this->baseUrl ();
+?>/">Oglasi</a></h1>
+</div>
+
+<div id="mainNav">
+
+<ul>
+		<?php
+		if (Zend_Controller_Front::getInstance ()->getRequest ()->getControllerName () == "index") {
+			?>
+		<li><a style="color: #000;"
+		href="<?php
+			echo $this->baseUrl ();
+			?>/index">Početna</a></li>
+		<?php
+		} else {
+			?>
+		<li><a href="<?php
+			echo $this->baseUrl ();
+			?>/index">Početna</a></li>
+		<?php
+		}
+		?>
+		
+		<?php
+		if (Zend_Controller_Front::getInstance ()->getRequest ()->getControllerName () == "oglasi") {
+			?>
+		<li><a style="color: #000;"
+		href="<?php
+			echo $this->baseUrl ();
+			?>/oglasi">Oglasi</a></li>
+		<?php
+		} else {
+			?>
+		<li><a href="<?php
+			echo $this->baseUrl ();
+			?>/oglasi">Oglasi</a></li>
+		<?php
+		}
+		?>
+		
+		<?php
+		if (Zend_Controller_Front::getInstance ()->getRequest ()->getControllerName () == "kontakt") {
+			?>
+		<li><a style="color: #000;"
+		href="<?php
+			echo $this->baseUrl ();
+			?>/kontakt">Kontakt</a></li>
+		<?php
+		} else {
+			?>
+		<li><a href="<?php
+			echo $this->baseUrl ();
+			?>/kontakt">Kontakt</a></li>
+		<?php
+		}
+		?>
+		
+		<?php
+		if (Zend_Controller_Front::getInstance ()->getRequest ()->getControllerName () == "onama") {
+			?>
+		<li><a style="color: #000;"
+		href="<?php
+			echo $this->baseUrl ();
+			?>/onama">O nama</a></li>
+		<?php
+		} else {
+			?>
+		<li><a href="<?php
+			echo $this->baseUrl ();
+			?>/onama">O nama</a></li>
+		<?php
+		}
+		?>	
+		
+		<li><a
+		href="<?php
+		echo $this->baseUrl ();
+		?>/prijateljskisajtovi/pregled/listasajtova">Prijateljski sajtovi</a></li>
+
+</ul>
+</div>
+<div class="searchForm_Search">
+<?php
+$searchForm = new Search_Form_Fastsearch ();
+$searchForm->setAction ( $this->baseUrl ( 'search/search/index' ) );
+echo $searchForm;
+?>
+</div>
+<div>
+<div id="nav">
+	<?php
+	if (Zend_Controller_Front::getInstance ()->getRequest ()->getControllerName () != "oglasi") {
+		?>
+		
+			<h2>Najnoviji oglasi</h2>
+<?php
+	}
+	echo $this->layout ()->nav;
+	?>
+	
+&nbsp</div>
+<div id="sidebar">
+
+<div id="subNav">
+			<?php
+			echo $this->layout ()->subNav = $this->action ( 'index', 'index', 'users', array () );
+			?>
+			&nbsp
+		</div>
+<div id="adminMenu">
+			<?php
+			//echo $this->layout()->adminMenu;
+			?>
+			&nbsp
+		</div>
+<div id="userForm">
+			<?php
+			//echo $this->layout()->userForm;
+			?>
+			&nbsp
+		</div>
+</div>
+<div id="main">
+<noscript>
+<div
+	style="padding: 5px; margin: 10px; border: 1px solid #363; background: #dda;">
+<h2>Nije vam uključen javascript!</h2>
+<p>Molimo vas uključite javascript....</p>
+</div>
+</noscript>
+		<?php
+		echo $this->layout ()->content;
+		?>
+			&nbsp
+</div>
+
+
+</div>
+<div id="footer">
+	<?php
+	echo $this->layout ()->footer = $this->action ( 'index', 'footer', 'vlasotince', array () );
+	?>
+	<div class="footer_kruks">
+<p style="color: blue; text-align: center; font-style: italic;"><a
+	style="text-decoration: none;"
+	href="<?php
+	echo $this->baseUrl ();
+	?>"><em>Vlasotince Online</em></a> <br />
+<em style="color: #000; font-size: 10px;">Design by</em> <a
+	style="color: #00f; font-size: 10px; margin: 0;"
+	href="http://www.kruksoft.com">Kruksoft</a></p>
+</div>
+</div>
+</div>
+</body>
+<?php
+$this->addScriptPath ( APPLICATION_PATH . '/views/scripts' );
+echo $this->render ( 'util/profiler.phtml' );
+?>
+</html>
+<?php
+//echo Zend_Date::now()->toString('dd-MM-yyyy');
+?>

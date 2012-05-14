@@ -1,0 +1,83 @@
+<?php 
+echo $this->doctype();
+?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+
+<?php echo $this->headMeta(); ?>
+	<?php 
+	$request = Zend_Controller_Front::getInstance()->getRequest();
+	echo $this->headTitle($request->getControllerName())
+	->headTitle($request->getActionName());
+	 ?>
+	<?php echo $this->headStyle(); ?>
+	<?php echo $this->headLink(); ?>
+	<?php echo $this->headScript(); ?>
+	
+	 
+	<style type="text/css">
+.navigacijaDiv{
+	margin:25px 0 0 0; 
+	padding:5px 0;
+	background-color:aqua; 
+	width:100%; 
+	height:50px;
+}
+.navigacija{
+	float:left;
+	padding: 15px;
+}
+.navigacijaDiv a:hover{
+	background-color:lime;
+}
+.selected{
+		color:black;
+		text-decoration:none;
+}
+
+.glavni{
+	min-height:300px;
+	background-color:transparent;
+	margin: 10px 0;
+}
+.user{
+	float:right;
+margin:5px;
+}
+.user a{
+	float:right;
+}
+	</style>
+</head>
+<body>
+
+<h2><a style="color:black; text-decoration:none;" href="<?php echo $this->baseUrl(); ?>/adminpage/"> Administratorski panel </a></h2>
+<a style="margin-left:25px;" href="<?php echo $this->baseUrl(""); ?>">Vlasotince Online</a>
+<div class="user">
+Dobrodošli <?php echo Zend_Auth::getInstance()->getIdentity()->first_name; ?><br />
+<a href="<?php echo $this->baseUrl(); ?>/users/logout">>>Logout<<</a>
+</div>
+<div class="navigacijaDiv">
+
+<?php if($request->getActionName() == "kategorije"){ ?>
+<a style="margin-left:25px;" class="navigacija selected" href="<?php echo $this->baseUrl(); ?>/adminpage/kategorije">Kategorije</a>
+<?php }else{?>
+<a style="margin-left:25px;" class="navigacija" href="<?php echo $this->baseUrl(); ?>/adminpage/kategorije">Kategorije</a>
+<?php } if($request->getActionName() == "podkategorije"){ ?>
+<a class="navigacija selected" href="<?php echo $this->baseUrl(); ?>/adminpage/podkategorije">Podkategorije</a>
+<?php }else{?>
+<a class="navigacija" href="<?php echo $this->baseUrl(); ?>/adminpage/podkategorije">Podkategorije</a>
+<?php } if($request->getActionName() == "korisnici"){ ?>
+<a class="navigacija selected" href="<?php echo $this->baseUrl(); ?>/adminpage/korisnici">Korisnici</a>
+<?php }else{?>
+<a class="navigacija" href="<?php echo $this->baseUrl(); ?>/adminpage/korisnici">Korisnici</a>
+<?php } ?>
+</div>
+<div class="glavni">
+<?php 
+				echo $this->layout()->content;
+			?>
+			&nbsp
+</div>
+</body>
+</html>

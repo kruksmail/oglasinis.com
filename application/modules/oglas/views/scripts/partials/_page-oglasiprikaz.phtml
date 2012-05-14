@@ -1,0 +1,172 @@
+
+<div class="featuredItem_Oglas">
+<h2 class="naslovPrikaz_Oglas"><a title="Nis oglasi - <?php
+	echo $this->escape ( $this->naslov )?>" style="text-align:left;"><?php
+echo $this->escape ( ucfirst($this->naslov) );
+?></a></h2>
+
+<div class="cenaPrikazMali_Oglas" style="display:block; margin-right:20px;">
+<?php
+if ($this->cena == 0) {
+	echo "Cena po dogovoru";
+} else {
+	echo number_format($this->escape ( $this->cena )) . " " . $this->escape ( $this->valuta );
+}
+
+?></div>
+<br>
+<div  style="display:block; float:left; width:440px; color:black; line-height:normal; margin:5px;padding:3px; font-size:14px; text-align:left;">
+<?php 
+$def_img = "/images/upload/slikeoglasa/NisOglasi.jpg";
+if( $this->escape ( $this->glavna_slika ) != $def_img
+   || $this->escape ( $this->slika_dva ) != $def_img
+   || $this->escape ( $this->slika_tri ) != $def_img
+   || $this->escape ( $this->slika_cetri ) != $def_img
+)
+{
+?>
+<div class="gallery" id="gallery_<?php echo $this->id_oglasa; ?>">
+Slike:<br>
+<ul>
+<?php 
+   if($this->glavna_slika != $def_img)
+   {
+      $slika = $this->glavna_slika;
+      ?>
+        <li>
+         <a href='<?php
+         	echo $this->escape ( $this->baseUrl ( $slika ) );?>' title="Nis oglasi - <?php echo $this->escape ( $this->naslov )?>">
+         <img title="Klikni za uvećanje"
+         	alt="Nis oglasi - <?php
+         	echo $this->escape ( $this->naslov )?>"
+         	src="<?php
+         	echo $this->escape ( $this->baseUrl ( $slika ) );
+         	?>"></a>
+         	</li>
+   	<?php 
+   }
+    
+   if($this->slika_dva != $def_img)
+   {
+      $slika = $this->slika_dva;
+      ?>
+       <li >
+      <a href='<?php
+      	echo $this->escape ( $this->baseUrl ( $slika ) );?>' title="Nis oglasi - <?php echo $this->escape ( $this->naslov )?>">
+      <img title="Klikni za uvećanje"
+      	alt="Nis oglasi - <?php
+      	echo $this->escape ( $this->naslov )?>"
+      	src="<?php
+      	echo $this->escape ( $this->baseUrl ( $slika ) );
+      	?>"></a>
+      	</li>
+   	<?php 
+   }
+
+   if($this->slika_tri != $def_img)
+   {
+      $slika = $this->slika_tri;
+      ?>
+       <li >
+      <a href='<?php
+      	echo $this->escape ( $this->baseUrl ( $slika ) );?>' title="Nis oglasi - <?php echo $this->escape ( $this->naslov )?>">
+      <img title="Klikni za uvećanje"
+      	alt="Nis oglasi - <?php
+      	echo $this->escape ( $this->naslov )?>"
+      	src="<?php
+      	echo $this->escape ( $this->baseUrl ( $slika ) );
+      	?>"></a>
+      	</li>
+   	<?php 
+   }
+   
+   $style4 = "";
+   if( ($this->glavna_slika != $def_img)
+      && ($this->escape ( $this->slika_dva ) != $def_img)
+      && ($this->escape ( $this->slika_tri ) != $def_img) )
+   {
+      $style4 = "style='margin-top:-17px;'";
+   }
+   if($this->slika_cetri != $def_img)
+   {
+      $slika = $this->slika_cetri;
+      ?>
+       <li>
+      <a href='<?php
+      	echo $this->escape ( $this->baseUrl ( $slika ) );?>' title="Nis oglasi - <?php echo $this->escape ( $this->naslov )?>">
+      <img  <?php echo $style4;?> title="Klikni za uvećanje"
+      	alt="Nis oglasi - <?php
+      	echo $this->escape ( $this->naslov )?>"
+      	src="<?php
+      	echo $this->escape ( $this->baseUrl ( $slika ) );
+      	?>"></a>
+      	</li>
+   	<?php 
+   }
+?>
+</ul>
+</div>
+<script type="text/javascript">
+    $(function() {
+        $('#gallery_<?php echo $this->id_oglasa; ?> a').lightBox();
+    });
+</script>
+<?php 
+}
+?>
+<div style="float:left; width:440px;">
+<p style='font-size:14px; padding:3px; margin:5px;'>
+<?php 
+echo  htmlspecialchars(ucfirst ($this->detalji)) ."<br>";
+?>
+</p>
+<br>
+<div class="gradPrikazMali_Oglas">
+<p style='font-size:12px; padding:3px; margin:5px; line-height:24px;'>
+<?php 
+if(strtotime($this->datum_kreiranja) > (time() - 3*24*60*60))
+{
+?>
+<label style="margin:5px; padding:2px; border:1px solid white; background-color:#FF6666; font-size:10px; color:white;">
+Novo!</label>
+<br>
+<br>
+<?php 
+}
+?>
+
+<?php echo $this->partialLoop()->view->kategorije[$this->id_kategorije]; ?>,
+<?php echo $this->partialLoop()->view->podkategorije[$this->id_podkategorije]; ?>
+<br><br>
+<?php
+if($this->adresa || $this->telefoni || $this->email || $this->sajt)
+   echo "Kontakt podaci:&nbsp;<br>";
+   
+if( $this->telefoni )
+   echo "Telefon(i): " . htmlspecialchars(ucfirst ($this->telefoni)) . "<br>";
+
+if( $this->email )
+   echo "Email: <a href='mailto:". $this->escape ( $this->email ) ."'>". htmlspecialchars($this->email) . "</a><br>";
+
+if( $this->sajt )
+   echo "Web sajt: <a href='http://" . $this->escape ( $this->sajt ) . "'>" . htmlspecialchars($this->sajt) . "</a><br>";   
+   
+if($this->adresa)
+    echo "Adresa: " . htmlspecialchars(ucfirst ($this->adresa)) . "<br>";
+   
+if($this->grad)
+   echo "Grad: ". $this->escape ( $this->grad ) . "<br>";
+
+if(strtotime($this->datum_kreiranja))
+{
+   $dat_kreiranja = strtotime($this->datum_kreiranja);
+   echo "Oglas predat: " . date("d.m.Y H:i", $dat_kreiranja) ." h<br>";
+   echo "Oglas ističe: " . date("d.m.Y H:i", strtotime("+2 month") - (time() - $dat_kreiranja)) . " h<br>";
+}
+?>
+</p>
+</div>
+</div>
+</div>
+</div>
+

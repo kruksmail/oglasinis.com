@@ -1,0 +1,81 @@
+<div class="footer_glavni_meni" style="margin-right: 20px;">
+<?php 
+//ide glavni meni u footeru
+?>
+<h2>Glavni meni</h2>
+<a class="foother_meni" href="<?php  echo $this->baseUrl();?>/pravilakoriscenja">Pravila korišćenja</a><br />
+<a class="foother_meni" href="<?php  echo $this->baseUrl();?>/onama">O nama</a><br />
+<a class="foother_meni" href="<?php  echo $this->baseUrl();?>/kontakt">Kontakt</a><br />
+	
+
+
+
+<?php 
+//idu oglasi u footeru
+$listaKategorija = $this->action('lista','index','kategorija',array());
+$listaKategorija = substr($listaKategorija, 0, strlen($listaKategorija) - 1);
+if(isset($listaKategorija) && $listaKategorija != NULL)
+{
+	$listaArray = explode(',',$listaKategorija);
+}
+else
+{
+	$listaArray = NULL;
+}
+?>
+</div>
+<div class="footer_glavni_meni">
+<h2 style="width: 520px;">Oglasi</h2>
+<table cellspacing="15" cellpadding="15">
+<?php 
+$i = 0;
+$n = 3;
+if(isset($listaArray) && $listaArray != NULL)
+{
+	foreach($listaArray  as $key => $val)
+	{
+		
+		$tmp = explode('/',$val);
+?>
+		
+<?php
+		if($i == 0)
+		{		
+?>
+			<tr>
+<?php 
+		} 
+?>
+		<td>
+		<a class="foother_meni" href="<?php echo $this->baseUrl();?>/oglasi/index/kategorija/<?php 	
+			echo $tmp[0]; 
+?>">
+<?php 
+			echo $tmp[1]; 
+?>
+</a>
+		</td>
+<?php
+		$i++;
+		if($i == $n)
+		{
+			$i = 0;
+?>
+			</tr>
+<?php 
+		} 	
+?>
+		
+<?php 		
+	}
+	if(count($listaArray)%$n != 0)
+	{
+?>
+			</tr>
+<?php 
+	} 	
+
+}
+?>
+</table>
+</div>

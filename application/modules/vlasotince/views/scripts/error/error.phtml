@@ -1,0 +1,11 @@
+<?php
+$this->layout()->nav = $this->action('index','index','kategorija',
+array('kategorija'=> $this->kategorija, 'podkategorija' => $this->podkategorija));
+
+$provera = $this->action('provera','index','kategorija',
+array('kategorija'=> $this->kategorija, 'podkategorija' => $this->podkategorija));
+
+?>
+<p>
+<?php echo $this->message; ?> 
+</p>

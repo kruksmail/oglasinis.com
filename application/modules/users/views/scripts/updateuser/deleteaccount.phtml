@@ -1,0 +1,35 @@
+<style>
+<!--
+.user_deleteaccount{
+	float:left;
+	width:40em;
+	text-align:left;
+}
+-->
+</style>
+<div class="user_deleteaccount">
+<h2 style="color:red;">Brisanje naloga?</h2>
+<br />
+<?php
+if($this->message == NULL)
+{
+	$this->action('index','logout','users',array());
+	echo "Uspešno ste obrisali svoj nalog!<br />";
+?>
+	<p><a style="margin:0;" href='<?php echo $this->baseUrl(); ?>/'>Nazad</a></p>
+<?php 
+}
+else
+{
+	if($this->message != "1")
+	{
+		echo $this->message . "<br />";
+	}
+	echo $this->form;
+?>
+	<p><a style="margin:0;" href='<?php echo $this->baseUrl(); ?>/users/useraccount'>Nazad</a></p>
+<?php 
+}
+?>
+</div>
+

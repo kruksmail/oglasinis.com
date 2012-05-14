@@ -1,0 +1,11 @@
+<?php
+$this->layout()->nav = $this->action('index','index','kategorija',
+array('kategorija'=> $this->kategorija, 'podkategorija' => $this->podkategorija));
+
+$provera = $this->action('provera','index','kategorija',
+array('kategorija'=> $this->kategorija, 'podkategorija' => $this->podkategorija));
+
+?>
+<h1>O nama</h1>
+<p>- Portal OglasiNis.com namenjen je besplatnom oglašavanju isključivo za grad Niš. U toku je nadogradnja portala, gde će svaki njegov korisnik moći da se registruje i time stekne pravo na lakše upravljanje njegovim oglasima, kao i mnoge druge benefite koje pripremamo.</p>
+<p>- Za sva Vaša pitanja, primedbe ili sugestije možete nas kontaktirati na email : oglasinis@gmail.com</p>

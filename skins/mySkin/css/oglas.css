@@ -1,0 +1,588 @@
+@CHARSET "UTF-8";
+
+label {
+	font-size: 15px;
+	padding-left: 10px;
+}
+
+.unosOglasaRight_Oglas {
+	font-size: 30px;
+	height: 35px;
+	margin: 5px;
+	float: right;
+	overflow: hidden;
+	font-size: 30px;
+	background-color: #66CCFF;
+	width: 230px;
+	overflow: hidden;
+}
+
+.fbShare_Oglas {
+	text-indent: 20px;
+	clear: both;
+	float: left;
+	width: 530px;
+	height: auto;
+	background-color: none;
+	margin: 5px;
+	padding: 10px;
+	width: 490px;
+	float: right;
+	overflow: hidden;
+	font-size: 25px;
+}
+
+.fbShareMain_Oglas {
+	float: right;
+	width: 290px;
+	height: 50px;
+	background-color: black;
+	margin: 5px auto;
+	padding: 5px;
+	float: right;
+	overflow: hidden;
+	font-size: 25px;
+	clear: both;
+}
+
+fbShareMain_Oglas
+
+a .slikaLink_Oglas {
+	width: 100px;
+	height: 125px;
+}
+
+#oglasivac-element input {
+	width: 180px;
+}
+
+#name-element input {
+	width: 400px;
+}
+
+#adresa-element input {
+	width: 400px;
+}
+
+#telefoni-element input {
+	width: 400px;
+}
+
+#email-element input {
+	width: 250px;
+}
+
+#sajt-element input {
+	width: 250px;
+}
+
+#kategorija-element select {
+	width: 250px;
+}
+
+#podkategorija-element select {
+	width: 250px;
+}
+
+.featuredItem_Oglas {
+	float: left;
+	padding: 2px 5px;
+	margin: 5px;
+	width: 460px;
+	-moz-border-radius: 5px;
+	border: 1px solid #749BCE;
+	overflow: hidden;
+	background-color: white;
+	margin-top: 5px;
+	background: url('../images/background1.jpg') repeat center top;
+}
+
+.featuredItem_Oglas:hover {
+	float: left;
+	padding: 2px 5px;
+	margin: 5px;
+	width: 460px;
+	-moz-border-radius: 5px;
+	border: 1px solid #749BCE;
+	overflow: hidden;
+	margin-top: 5px;
+	background: url('../images/returned.jpg') repeat center top;
+}
+
+.naslovPrikaz_Oglas a {
+	clear: both;
+	padding: 2px 5px;
+	margin: 5px;
+	width: 435px;
+	height: 25px;
+	-moz-border-radius: 5px;
+	border: 1px solid #749BCE;
+	overflow: hidden;
+	background-color: white;
+	margin-bottom: 10px;
+	font-weight: bold;
+	color: #8d4544;
+	float: left;
+	font-size: 21px;
+	background: url('../images/kategorije.png') repeat-x left top #545D6C;
+	color: white;
+}
+
+.naslovPrikaz_Oglas a:hover {
+
+}
+
+.featuredItem_Oglas h3 a {
+	color: #000;
+	text-decoration: none;
+}
+
+.featuredItem_Oglas h3 a:hover {
+	text-decoration: underline;
+}
+
+.featuredItem_Oglas  p {
+	font-size: 18px;
+}
+
+.featuredItem_Oglas a img {
+	width: 100px;
+   height: 100px;
+   float: left;
+   margin: 0;
+   margin-right:2px;
+   padding: 0;
+   border-color: white;
+}
+
+.featuredItem_Oglas ul {
+	padding: 5px 30px;
+}
+
+.featuredItem_Oglas p.detalji_Oglas {
+	height: 70px;
+	width: 450px;
+	font-size: 16px;
+}
+
+p.ispisGrada_Oglas {
+	font-size: 20px;
+	float: right;
+	width: 200px;
+	height: auto;
+}
+
+p.ispisAdresa_Oglas {
+	height: auto;
+	font-weight: bold;
+	font-size: 12px;
+	width: 200px;
+	float: right;
+	margin-bottom: 0px;
+	float: right;
+}
+
+div#unosOglasa_Oglas {
+	width: 490px;
+}
+
+div#unosOglasa_Oglas h2 {
+	font-size: 23px;
+}
+
+div#unosOglasa_Oglas label {
+	font-size: 19px;
+}
+
+.odabirKategorije_Oglas {
+	list-style: none;
+	display: block;
+	font-size: 17px;
+}
+
+.kategorijeZaUnosWrapper_Oglas {
+	width: 230px;
+	overflow: hidden;
+	float: left;
+	margin-left: 5px;
+	margin-bottom: 5px;
+	min-height: 250px;
+	height: auto;
+}
+
+.ispisKategorijeZaOdabir_Oglas {
+	font-size: 23px;
+}
+
+.odabirKategorije_Oglas li {
+	
+}
+
+.odabirPodKategorije_Oglas a {
+	
+}
+
+.detaljiDugme_Oglas {
+	padding: 2px 0px;
+	margin-top: 5px;
+	float: left;
+	color: blue;
+	width: 63px;
+	height: 160px;
+	overflow: hidden;
+	background-color: Aquamarine;
+	font-size: 18px;
+}
+
+.detaljiDugme_Oglas:hover {
+	padding: 2px 0px;
+	margin-top: 5px;
+	float: left;
+	color: white;
+	width: 63px;
+	height: 160px;
+	overflow: hidden;
+	background-color: #0099FF;
+	font-size: 18px;
+	text-align: left;
+}
+
+.cenaPrikazMali_Oglas {
+	float: right;
+	margin: 0px;
+	font-size: 18px;
+	text-align: right;
+	padding: 0px
+}
+
+.gradPrikazMali_Oglas {
+	float: right;
+	vertical-align:bottom;
+	font-size: 12px;
+	text-align: right;
+	font-style: italic;
+	font-weight: lighter;
+	padding: 0px;
+	margin: 0px;
+}
+
+.gradPrikazMali_Oglas p {
+	font-size: 18px;
+	font-style: italic;
+	font-weight: lighter;
+	color: #853938;
+	margin: 0px;
+	padding: 0px;
+}
+
+.gradPrikazMali_Oglas span {
+	width: 320px;
+	height: 35px;
+	font-size: 16px;
+	font-style: italic;
+	font-weight: lighter;
+	color: #853938;
+	padding: 0px;
+	margin: 0px;
+}
+
+.mainPrikaz_Oglas {
+	margin: 0px;
+	width: 70px;
+	height: 70px;
+	border: 3px solid black;
+	overflow: hidden;
+	padding: 0px
+}
+
+.slikaPrikazMain_Oglas {
+	width: 35px;
+	height: 35px;
+	color: #853938;
+}
+
+.slikaPrikazMain_Oglas img {
+   width: 35px;
+   height: 35px;
+   border: 2px solid black;
+   overflow: hidden;
+}
+
+p.datumPredaje_Oglas {
+	margin-left: 10px;
+	font-size: 17px;
+	width: 300px;
+	float: right;
+}
+
+#formaKriterijumi_Oglas {
+	font-size: 17px;
+	margin: 0px;
+	padding: 0px;
+	margin-bottom: 15px;
+}
+
+#formaKriterijumi_Oglas h2 {
+	font-size: 21px;
+	margin: 0px;
+	padding: 0px;
+}
+
+#searchForm_oglas {
+	width: 98%;
+	height: auto;
+	overflow: hidden;
+	border-bottom: 1px double #cbc8bc;
+	font-size: 12px;
+}
+
+#searchForm_oglas h2 {
+	margin-bottom: -20px;
+	font-size: 20px;
+}
+
+#searchForm_oglas table {
+	text-align: left;
+}
+
+#searchForm_oglas tr {
+	font-size: 15px;
+	width: 300px;
+	margin-left: 5px;
+}
+
+#searchForm_oglas td {
+	padding: 5px;
+	font-size: 17px;
+	font-weight: bold;
+}
+
+#searchForm_oglas select {
+	margin: 2px;
+	min-width: 150px;
+	font-size: 13px;
+	text-align: left;
+}
+
+#searchForm_oglas input {
+	max-width: 100px;
+	font-size: 12px;
+}
+
+#searchForm_oglas input {
+	font-size: 19px;
+}
+
+div.mainVelikiPrikaz_Oglas {
+	height: auto;
+	width: 100%;
+	overflow: hidden;
+	padding: 5px;
+	min-height: 500px;
+	float: left;
+}
+
+div.naslovVelikiPrikaz_Oglas {
+	height: auto;
+	width: 97%;
+	overflow: hidden;
+	padding: 5px;
+}
+
+div.naslovVelikiPrikaz_Oglas span {
+	color: #524E47;
+}
+
+p.nasloviMainVelikiPrikaz_Oglas {
+	padding: 5px;
+	background: url('../images/kategorije.png') repeat left top #545D6C;
+	color: white;
+	max-width: 90%;
+	height: 22px;
+	line-height: 18px;
+	font-size: 23px;
+	margin-top: 5px;
+}
+
+p.nasloviVelikiPrikaz_Oglas {
+	padding: 10px;
+	max-width: 400px;
+	width: auto;
+	height: auto;
+	font-size: 23px;
+	margin-top: 5px;
+}
+
+div.kontaktVelikiPrikaz_Oglas {
+	background: url('../images/returned.jpg') repeat center top;
+	height: auto;
+	width: 470px;
+	overflow: hidden;
+	padding: 5px;
+	margin-bottom: 5px;
+	-moz-border-radius: 5px;
+	border: 1px medium #524E47;;
+}
+
+p.kontaktVelikiPrikaz_Oglas {
+	padding: 10px;
+	background-color: green;
+	width: 500px;
+	height: auto;
+	font-size: 20px;
+	margin-top: 5px;
+}
+
+.kontaktVelikiPrikaz_Oglas span {
+	text-align: right;
+	background: url('../images/kategorije.png') repeat left top #545D6C;
+	margin-bottom: 13px;
+	margin-right: 10px;
+	width: auto;
+	padding: 3px;
+	font-size: 25px;
+	-moz-border-radius: 5px;
+	border: 1px solid #749BCE;
+	height: auto;
+	color: white;
+}
+
+.detaljiVelikiPrikaz_Oglas span {
+	color: #524E47;
+	text-align: right;
+	margin-bottom: 20px;
+	margin-right: 1px;
+	width: 230px;
+	padding: 1px;
+	font-size: 23px;
+	-moz-border-radius: 5px;
+	border: 1px solid #749BCE;
+	height: auto;
+}
+
+.nasloviVelikiPrikaz_Oglas span {
+	text-align: right;
+	text-indent: 30px;
+	margin-bottom: 20px;
+	margin-right: 5px;
+	width: auto;
+	padding: 1px;
+	font-size: 23px;
+	-moz-border-radius: 5px;
+	border: 1px solid #749BCE;
+	height: auto;
+	background: url('../images/background1.jpg') repeat left top #545D6C;
+}
+
+#slikeOglasaPrikaz {
+	width: 230px;
+	height: 320px;
+	text-align: center;
+	overflow: hidden;
+	margin: 5px;
+}
+
+.slika {
+	width: 240px;
+	height: 240px;
+	border-color: white;
+	border-style: outset;
+	border-width: thick;
+	text-align: center;
+	background-color: gray;
+}
+
+.slikaMala {
+	width: 45px;
+	height: 50px;
+	border: white outset;
+	text-align: center;
+}
+
+.detaljiVelikiPrikaz_Oglas {
+	float: left;
+	width: 210px;
+	height: 312px;
+	background: url('../images/returned.jpg') repeat center top;
+	font-size: 17px;
+	-moz-border-radius: 5px;
+	border: 1px solid #749BCE;
+	margin: 3px;
+	padding: 6px;
+	font-size: 20px;
+	overflow: hidden;
+}
+
+.detaljiVelikiPrikaz_Oglas span {
+	text-align: right;
+	background-color: gray;
+	margin-bottom: 15px;
+	margin-right: 10px;
+	width: auto;
+	padding: 2px;
+	font-size: 23px;
+	-moz-border-radius: 5px;
+	border: 1px solid #749BCE;
+	height: auto;
+	background: url('../images/background1.jpg') repeat left top #545D6C;
+}
+
+div.paginationControl_Oglas {
+	margin: 1px;
+	margin-top: 0px;
+	width: 500px;
+	overflow: hidden;
+	font-size: 19px;
+	text-align: center;
+	padding: 0px;
+	padding-top: 10px;
+}
+
+.paginationControl_Oglas a {
+	margin: 5px;
+	color: #ff6666;
+	font-weight: bold;
+}
+
+.paginationControl_Oglas a span {
+	color: #ff6666;
+	font-weight: bold;
+}
+
+img.slikaIzmena_Oglas {
+   width: 110px;
+   height: 110px;
+   overflow: hidden;
+}
+
+.tabelaSlikaIzmena_Oglas th {
+	font-size: 15px;
+}
+
+table.userListaPrikaz_oglas {
+	margin: 10px 10px;
+	border: #999 1px solid;
+	font-size: 15px;
+}
+
+table.userListaPrikaz_oglas th {
+	background: #ccc;
+	font-weight: bold;
+	padding: 5px;
+	border-right: #999 1px solid;
+}
+
+table.userListaPrikaz_oglas td {
+	border-top: #999 1px solid;
+	border-right: #999 1px solid;
+	padding: 5px;
+}
+
+
+.odabir_kategorija h3 {
+	background: url("../images/top-spacer.jpg") no-repeat scroll right
+		bottom transparent;
+	text-align: center;
+	width: 300px;
+	margin-left: 200px;
+}

@@ -1,0 +1,101 @@
+.mainPrikaz_Prijateljskisajtovi {
+	float: left;
+	overflow: hidden;
+	width: 220px;
+	min-height: 400px;
+	height: auto;
+	overflow: hidden;
+	margin: 6px;
+	padding-top: 8px;
+	text-align: center;
+}
+
+.naslovPrikaz_Prijateljskisajtovi {
+	overflow: hidden;
+	width: 90%;
+	min-height: 37px;
+	text-align: center;
+	-moz-border-radius: 5px;
+	border: #aaa 1px solid;
+	font-size: 15px;
+	overflow: hidden;
+	margin: 2px;
+	padding: 22px;
+	padding: 8px;
+}
+
+.linkPrikaz_Prijateljskisajtovi a {
+	float: left;
+	overflow: hidden;
+	width: 90%;
+	min-height: 20px;
+	text-align: center;
+	margin: 2px;
+	padding: 2px;
+	-moz-border-radius: 5px;
+	border: #aaa 1px solid;
+	font-size: 15px;
+	padding: 8px;
+}
+
+.emailPrikaz_Prijateljskisajtovi {
+	float: left;
+	overflow: hidden;
+	width: 90%;
+	min-height: 20px;
+	text-align: center;
+	margin: 2px;
+	padding: 2px;
+	-moz-border-radius: 5px;
+	border: #aaa 1px solid;
+	font-size: 15px;
+	padding: 8px;
+}
+
+.mainPrikaz_Prijateljskisajtovi img {
+	text-align: center;
+	overflow: hidden;
+	width: 100%;
+	min-height: 150px;
+	height: 150px;
+	overflow: hidden;
+	margin: 0px;
+	margin-left:-20px;
+	text-align: center;
+}
+
+.mainPrikaz_Prijateljskisajtovi p {
+	text-align: justify;
+	overflow: hidden;
+	width: 90%;
+	min-height: 125px;
+	height: auto;
+	overflow: hidden;
+	margin: 6px;
+	text-align: center;
+}
+
+.opisPrikaz_Prijateljskisajtovi {
+	float: left;
+	overflow: hidden;
+	width: 90%;
+	min-height: 100px;
+	text-align: center;
+	margin: 2px;
+	padding: 2px;
+	-moz-border-radius: 5px;
+	border: #aaa 1px solid;
+	font-size: 15px;
+	padding: 8px;
+}
+
+.editSlikaPrikaz_Prijateljskisajtovi img {
+	text-align: center;
+	overflow: hidden;
+	width: 90%;
+	height: 110px;
+	overflow: hidden;
+	margin: 6px;
+	text-align: center;
+	margin: 6px;
+}

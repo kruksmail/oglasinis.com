@@ -1,0 +1,206 @@
+<script type="text/javascript">
+<!--
+$(document).ready(function(){
+	$('#prijavise').css('cursor','pointer');
+	$('#prijavise_label').css('cursor','pointer');
+	$('#prijavise').click(function(){
+		 	if($('.account_menu').css('display') == "none")
+			{
+		 		$('#prijavise_label').css('background','url(<?php echo $this->baseUrl();?>/images/buttons/collapse.png) no-repeat');
+			}
+		 	else
+		 	{
+		 		$('#prijavise_label').css('background','url(<?php echo $this->baseUrl();?>/images/buttons/expand.png) no-repeat');
+			}
+		 	$('.account_menu').slideToggle(500);	
+		});
+
+});
+//-->
+</script>
+
+
+<?php if($this->identity == null){ ?>
+<style>
+<!--
+.account_main_menu{
+	float:left;
+	margin:0px auto;
+	padding:0px; 
+	height:130px;
+	font-size:14px; 
+	text-align:center;
+}
+.account_main_menu a{
+	float:left;
+	padding:10px 0px;
+	margin:0px auto;
+	margin-top:5px;
+	width:170px;
+	height:20px;
+	background:url('<?php echo $this->baseUrl();?>/images/buttons/1.png') no-repeat;
+	background-color:transparent;
+}
+.account_main_menu a label{
+	cursor:pointer;
+}
+
+.account_main_menu a:HOVER{
+	text-decoration:none;
+}
+.account_main_menu a label:HOVER{
+	text-decoration:none;
+}
+
+.account_menu
+{
+	float:left;
+	margin:0px auto;
+	padding:5px; 
+	font-size:12px;
+	text-align:left;
+	display:none;
+	background: #eee;
+	border-bottom: #aaa 1px solid;
+	border-top:0;
+}
+
+.account_menu a{
+	float:left;
+	padding:0px 0px;
+	margin:0px;
+	height:20px;
+	font-size:12px;
+}
+.account_menu a:HOVER{
+	text-decoration:underline;
+}
+
+
+.account_menu form
+{
+	padding:5px;
+}
+.account_menu label{
+	font-size:12px;
+}
+.account_menu input{
+	margin: 5px 0;
+	width:130px;
+	font-size:12px;
+}
+-->
+</style>
+<div class="account_main_menu">
+
+<a style="margin-top:0px;" href="<?php echo $this->baseUrl();?>/oglas/unosoglasa/">Dodaj oglas</a>
+
+<a href="<?php echo $this->baseUrl();?>/users/registration">Registruj se</a>
+
+<a id="prijavise" ><label style="color:blue; margin-left:5px;">Prijavi se</label>
+ <label id="prijavise_label" style="float:right; width:10px; height:20px; margin:0; margin-top:0px; padding-right:5px; 
+   background:url(<?php echo $this->baseUrl();?>/images/buttons/expand.png) no-repeat;
+   ">
+ 
+   </label> 
+</a>
+
+</div>
+<div class="account_menu">
+
+<?php
+echo $this->form;
+?>
+<br />
+<hr></hr>
+<a style="" href="<?php echo $this->baseUrl();?>/users/recovery">
+Zaboravili ste korisničko ime ili lozinku? 
+</a>
+<br />
+<br />
+</div>
+
+<?php 
+}else{ ?>
+<style>
+<!--
+.account_menu_loggedin
+{
+	font-size:12px;
+	margin:5px auto;
+	padding:5px;
+	
+	text-align:left;
+	background: rgb(255, 255, 255);
+	background:rgba(255, 255, 255, 0.5); 
+	border: #aaa 1px solid;
+}
+.account_menu_loggedin a
+{
+	font-size:12px;
+}
+.account_menu_loggedin a:HOVER
+{
+	text-decoration:underline;
+}
+
+#adminmenu
+{
+	text-align:left;
+	padding:5px 20px;
+}
+-->
+</style>
+<script type="text/javascript">
+<!--
+$(document).ready(function(){
+	$('#admin_menu_a').click(function(){
+		$('#adminmenu').slideToggle(1000);
+	});
+});
+//-->
+</script>
+<div class="account_menu_loggedin" style="padding:5px;">
+<h3>-- <?php 
+if($this->identity->sex == "Ženski")
+{
+	echo 'Dobrodošla';
+}
+else
+{
+	echo 'Dobrodošli';
+}
+?>
+ <?php echo $this->identity->first_name; ?> --</h3>
+<br />
+<a style="" href='<?php echo $this->baseUrl()?>/users/useraccount'>- Moj nalog</a><br />
+<a href='<?php echo $this->baseUrl()?>/oglas/user/listauser'>- Moji oglasi</a><br />
+<?php
+	$role = strtolower($this->identity->role); 
+	if($role == "administrator")
+	{
+?>
+<a id="admin_menu_a" href="#">- Administratorski panel</a><br />
+<div id="adminmenu" style="
+<?php if($this->adminExpand){?>
+display:block;
+<?php }else{?>
+	display:none;
+<?php }?>
+">
+<a href="<?php echo $this->baseUrl();?>/kategorija/edit/listkategorija">Kategorije</a><br />
+<a href="<?php echo $this->baseUrl();?>/kategorija/edit/listpodkategorija">Podkategorije</a><br />
+<a href="<?php echo $this->baseUrl();?>/users/list">Korisnici</a><br />
+<a href='<?php echo $this->baseUrl()?>/oglas/admin/listaadmin'>Svi oglasi</a><br />
+<a href='<?php echo $this->baseUrl()?>/prijateljskisajtovi/pregled/listasajtova'>Prijateljski sajtovi</a><br />
+<a href='<?php echo $this->baseUrl()?>/prijateljskisajtovi/pregled/'>Dodaj prijateljski sajt</a><br />
+</div>
+<?php 
+	}
+?>
+<a href='<?php echo $this->baseUrl()?>/users/avatar/privacy'>- Privatnost</a><br />
+<a href='#'>- Moji oglasi</a><br />
+
+<a href='<?php echo $this->baseUrl();?>/users/logout'>- Log out</a><br />
+</div>
+<?php } ?>

@@ -1,0 +1,99 @@
+<?php
+
+echo '<?xml version="1.0" encoding="UTF-8" ?>';
+echo $this->doctype ();
+?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+
+<?php
+$this->loadSkin ( $this->skin );
+?>
+<?php
+echo $this->headMeta ();
+?>
+<?php
+echo $this->headTitle ();
+?>
+<?php
+echo $this->headStyle ();
+?>
+<?php
+echo $this->headLink ();
+?>
+<link rel="shortcut icon" href="/favicon.ico" type="image/ico" />
+<?php
+$this->headScript ()->prependFile ( $this->baseUrl ( '/jquery/jquery.js', 'text/javascript' ) );
+$this->headScript ()->prependFile ( $this->baseUrl ( '/jquery/jquery.lightbox-0.5.js', 'text/javascript' ) );
+?>
+</head>
+<body>
+
+<div id="pageWrapperBorder">
+	<div id="pageWrapper">
+		<div id="header">
+			<div class="borderWrapperLine"></div>
+			<div id="logo"><h1><a href="/">Niski oglasi, kupujem, prodajem, potreban, stan, mobilni telefon, kuca, nekretnine</a></h1></div>
+		</div>
+		<div id="main_navigation">
+		<div class="clear"></div>
+			<ul>
+				<li><a href="/">Početna</a></li>
+				<li><a href="/oglasi">Oglasi</a></li>
+				<li><a href="/oglas/unosoglasa">Dodaj oglas</a></li>
+				<li><a href="/kontakt">Kontakt</a></li>
+			</ul>
+		
+		</div>
+		<br>
+		<div id="content">
+
+			<div id="left_side_bar">
+				<h3><span>BRZA PRETRAGA</span></h3>
+				<div class="searchForm1">
+					<?php echo $this->layout ()->search= $this->action ( 'index', 'index', 'search', array () );?>
+				</div>
+				<br /><br /><br />
+				<?php if (Zend_Controller_Front::getInstance ()->getRequest ()->getControllerName () == "oglasi") {?>
+					<h3><span>KATEGORIJE OGLASA</span></h3>
+					<?php echo $this->layout()->nav;?>
+				<?php }?>
+				
+			</div>
+			<div id="center_bar">
+				<noscript>
+				<div style="padding: 5px; margin: 10px; border: 1px solid #363; background: #dda;">
+				<h2>Nije uključen javascript!</h2>
+				<p>Molimo Vas uključite javascript....</p>
+				</div>
+				</noscript>
+				<?php echo $this->layout ()->content;?>
+				&nbsp
+			</div>
+			<div id="right_side_bar">
+				<?php 
+					echo $this->layout()->subNav = $this->action('index','index','users',array('expand'=> $this->adminExpand))
+					. $this->action('index','avatar','users',array());
+				?>
+				&nbsp
+				<iframe src="http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fpages%2FOglasi-Nis%2F149693898430143&amp;width=155&amp;colorscheme=light&amp;show_faces=true&amp;stream=false&amp;header=true&amp;height=62" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:155px; height:62px;" allowTransparency="true"></iframe>		
+			</div>
+			<div id="foother">
+			<?php echo $this->layout ()->footer = $this->action ( 'index', 'footer', 'vlasotince', array () );?>
+		</div>
+		<div class="footer_kruks"><p style="color: blue; text-align: center; font-style: italic;">
+			<a style="text-decoration: none;" href="<?php echo $this->baseUrl ();?>"><em>Vlasotince Online</em></a> 
+			<br />
+			<em style="color: #000; font-size: 10px;">Design by</em> 
+			<a style="color: #00f; font-size: 10px; margin: 0;"	href="http://www.kruksoft.com">Kruksoft</a></p>
+		</div>
+		
+	</div>
+</div>
+<div class="clear"></div>
+
+</body>
+</html>
+	<?php
+	//echo Zend_Date::now()->toString('dd-MM-yyyy');
+	?>

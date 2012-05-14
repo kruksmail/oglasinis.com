@@ -1,0 +1,30 @@
+<?php 
+?>
+<style>
+<!--
+.admin_panel{
+	font-size:1.2em;
+	margin:.5em;
+	padding: .5em;
+}
+-->
+</style>
+<h2>Aministratorski panel</h2>
+<div class="admin_panel">
+<?php 
+///*
+ ?>
+<div style="text-align:center; padding:5px; margin:10px auto;width:300px; background:#ccc;">
+<a href="<?php echo $this->baseUrl();?>/oglas/admin/listaadmin">Oglasi</a>
+<a href="<?php echo $this->baseUrl();?>/kategorija/edit/listkategorija">Kategorije</a>
+<a href="<?php echo $this->baseUrl();?>/kategorija/edit/listpodkategorija">Podkategorije</a>
+<a href="<?php echo $this->baseUrl();?>/users/list">Korisnici</a>
+</div>
+
+<?php 
+//*/
+echo  $this->action("listkategorija","edit","kategorija",array());
+echo  $this->action("listpodkategorija","edit","kategorija",array());
+echo  $this->action("index","list","users",array());
+?>
+</div>`

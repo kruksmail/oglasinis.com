@@ -1,0 +1,73 @@
+<style>
+<!--
+.user_list {
+	margin:10px;
+	padding:5px;
+}
+.user_list table th{
+	border-top:1px solid black;
+	border-left:1px solid black;
+	border-bottom:1px solid black;
+}
+.user_list table td{
+	border-left:1px solid black;
+	border-bottom:1px solid black;
+}
+.user_list table a{
+	font-style:italic;
+margin:5px 10px;
+}
+-->
+</style>
+<div class="user_list">
+<h3>Korisnici</h3>
+<p><a href='<?php echo $this->baseUrl(); ?>/users/create'>Kreiraj novog korisnika</a></p>
+<?php 
+if($this->users != null)
+{
+	?>
+	<table class='spreadsheet' cellpadding='5' cellspacing='0'>
+	<tr>
+		
+		<th>Prezime</th>
+		<th>Ime</th>
+		<th>Username</th>
+		<th>Uloga</th>
+		<th style="border-right:1px solid black;">Opcije</th>
+	</tr>
+	
+<?php foreach($this->users as $user)
+	{
+		if($user->id == Zend_Auth::getInstance()->getIdentity()->id)
+		{
+			continue;
+		}
+?>
+	<tr>
+		<td>
+		<?php echo $user->last_name; ?>
+		<td>
+		<?php echo $user->first_name; ?>
+		</td>
+		<td>
+		<?php echo $user->username; ?>
+		</td>
+		<td>
+		<?php echo $user->role; ?>
+		</td>
+		<td class='links' style="border-right:1px solid black;">
+		<a href='<?php echo $this->baseUrl();?>/users/update/index/id/<?php echo $user->id; ?>'>Izmeni</a>
+		<a href='<?php echo $this->baseUrl();?>/users/delete/index/id/<?php echo $user->id; ?>'>Obriši</a>
+		</td>
+	</tr>
+<?php
+	 }
+?>
+	</table>
+	<?php 
+} else {
+?>
+<p>Trenutno nemate korisnike.</p>
+<?php } ?>
+</div>
+

@@ -1,0 +1,15 @@
+<?php
+
+foreach ( $this->kategorije as $kategorija ) {
+	if (isset ( $this->podkategorije [$kategorija->name] )) {
+		foreach ( $this->podkategorije [$kategorija->name] as $podkategorija ) {
+			?>
+
+<option value='<?php
+			echo $podkategorija->id?>'label='<?php			echo $podkategorija->label?>'><?php echo $podkategorija->label?></option>
+<?php
+		}
+	}
+}
+
+?>

@@ -1,0 +1,65 @@
+<script type="text/javascript" src="<?php echo $this->baseUrl();?>/jquery/jquery.js"></script>
+<script type="text/javascript" src="<?php echo $this->baseUrl();?>/jquery/jquery.lightbox-0.5.js"></script>
+   
+<style type="text/css">
+	/* jQuery lightBox plugin - Gallery style */
+	.gallery {
+		float:left;
+		padding: 5px;
+	}
+	.gallery ul { padding:5px; list-style: none; }
+	.gallery ul li { display: inline; }
+	.gallery ul img {
+		border: 1px solid #3e3e3e;
+	}
+	.gallery ul a:hover img {
+		border: 1px solid #fff;
+		color: #fff;
+	}
+	.gallery ul a:hover { color: #fff; }
+</style>
+<h1>Grad Niš&nbsp;-&nbsp;Svi oglasi</h1>
+<?php
+if ($this->paginator->count () > 0) {
+	?>
+<div id="formaKriterijumi_Oglas">
+<?php
+	echo $this->searchForm;
+	
+	?></div>
+<?php
+	echo $this->partialLoop ( 'partials/_page-oglasiprikaz.phtml', $this->paginator );
+	echo $this->paginationControl ( $this->paginator, 'Sliding', 'partials/_page-paginationcontrol.phtml', array("params" => $this->params) );
+
+} else {
+	?>
+	<div class="formaKriterijumi_Oglas">
+<?php
+	echo $this->searchForm;
+	
+	?></div>
+		<br>
+<?php if($_POST){?>
+<h2>Nema oglasa za izabrane kriterijume</h2>
+<?php }else{?>
+<h2>Nema unetih oglasa
+<a href='<?php
+	echo $this->baseUrl ( 'oglas/unosoglasa/ ' );
+	?>'> DODAJ OGLAS </a></h2><?php
+   }
+}
+?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

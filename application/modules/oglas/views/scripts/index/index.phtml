@@ -1,0 +1,30 @@
+
+<?php
+
+if (isset ( $this->kategorija )) {
+	
+	if (isset ( $this->podkategorija )) {
+		if (isset ( $this->oglas )) {
+			echo $this->action ( 'open', 'index', 'oglas', array ('kategorija' => $this->kategorija, 'podkategorija' => $this->podkategorija, 'oglas' => $this->oglas ) );
+		
+		} else {
+			echo $this->action ( 'kategorijapodkategorijaprikaz', 'index', 'oglas', array ('kategorija' => $this->kategorija, 'podkategorija' => $this->podkategorija , 'page' => $this->page ) );
+		
+		}
+	} else {
+		
+		if (isset ( $this->oglas )) {
+			echo $this->action ( 'open', 'index', 'oglas', array ('kategorija' => $this->kategorija, 'podkategorija' => $this->podkategorija, 'oglas' => $this->oglas ) );
+		
+		} else {
+			echo $this->action ( 'kategorijaprikaz', 'index', 'oglas', array ('kategorija' => $this->kategorija, 'podkategorija' => $this->podkategorija, 'page' => $this->page  ) );
+		
+		}
+	
+	}
+} else {
+	echo $this->action ( 'mainprikaz', 'index', 'oglas', array ('kategorija' => $this->kategorija, 'podkategorija' => $this->podkategorija, 'page' => $this->page ) );
+
+}
+
+?>

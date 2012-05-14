@@ -1,0 +1,108 @@
+@CHARSET "ISO-8859-1";
+
+body {
+	font-family: Times New Roman, Helvetica, Arial, sans-serif;
+}
+
+p.ispisGrada {
+	font-size: 20px;
+	float: right;
+	width: 230px;
+	height: auto;
+}
+
+p.ispisAdresa {
+	height: auto;
+	font-weight: bold;
+	font-size: 12px;
+	width: 230px;
+	float: right;
+	margin-bottom: 0px;
+	float: right;
+}
+
+p.ispisDatuma {
+	font-size: 12px;
+}
+
+.prviDeo {
+	width: 500px;
+	float: left;
+}
+
+a.ispisDugmeDetalji {
+	width: 150px;
+	height: 35px;
+	font-size: 20px;
+}
+
+.srednjiDeo {
+	width: 500px;
+	float: left;
+}
+
+.donjiDeo {
+	float: left;
+	width: 500px;
+}
+
+#zaglavljeOglasa {
+	width: 530px;
+	height: auto;
+	-moz-border-radius: 5px;
+	border: 1px solid #749BCE;
+	margin: 3px;
+}
+
+
+#cenaOglasa {
+	float: right;
+	width: 95px;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+#telefoniOglasa {
+	font-size: 15px;
+	font-style: italic;
+	
+}
+
+.ispisNaslovaOglasa {
+	font-size: 18px;
+}
+
+.ponuda {
+	font-weight: bold;
+	font-size: 30px;
+	background-color: #749BCE;
+	width: 550px;
+}
+
+.potraznja {
+	font-weight: bold;
+	font-size: 30px;
+	background-color: #749BCE;
+	width: 550px;
+}
+
+.nemaUnetihUnesi {
+	width: 100px;
+	height: 32px;
+	font-size: 30px;
+}
+
+#podaciOOglasivacu {
+	width: 530px;
+	-moz-border-radius: 5px;
+	border: 1px solid #749BCE;
+	margin: 3px;
+}
+
+#detaljniPodaci {
+	width: 530px;
+	height: auto;
+	-moz-border-radius: 5px;
+	border: 1px solid #749BCE;
+	margin: 3px;
+}

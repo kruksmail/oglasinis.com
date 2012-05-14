@@ -1,0 +1,455 @@
+<?php 
+//echo $this->user['id'];
+//print_r($this->user->id);
+ 
+$local = new Zend_Locale('sr_Latn_ME');
+
+?>
+<style>
+<!--
+
+.useraccount_personalinfo a:HOVER{
+	text-decoration:underline;
+}
+
+.useraccount_additionalinfo a:HOVER{
+	text-decoration:underline;
+}
+.useraccount_contactinfo a:HOVER{
+	text-decoration:underline;
+}
+
+.useraccount_personalinfo
+{
+	float:left;
+	margin:5px;
+	padding:10px;
+	min-height:24em;
+	min-width:24em;
+	-moz-border-radius: 5px;
+	border-top:#aaa 1px solid;
+}
+
+.useraccount_contactinfo
+{
+	float:right;
+	margin:5px;
+	padding:10px;
+	min-height:24em;
+	min-width:24em;
+	-moz-border-radius: 5px;
+	border-top:#aaa 1px solid;
+}
+
+
+.useraccount_additionalinfo
+{
+	float:right;
+	margin:5px;
+	padding:10px;
+	min-height:20em;
+	min-width:24em;
+	-moz-border-radius: 5px;
+	border-top:#aaa 1px solid;
+}
+
+.useraccount_avatarimg
+{
+	float:left;
+	margin:5px;
+	padding:10px;
+	min-height:20em;
+	min-width:24em;
+	-moz-border-radius: 5px;
+	border-top:#aaa 1px solid;
+}
+.useraccount_avatarimg img{
+	max-height:10em;
+	max-width:10em;
+}
+.useraccount_avatarimg a:HOVER{
+	text-decoration:underline;
+}
+
+.delete_account {
+	padding:5px;
+	margin:0;
+}
+
+.delete_account a{
+	margin:0;
+}
+.delete_account a:HOVER{
+	text-decoration:underline;
+}
+-->
+</style>
+<h2 style="margin:5px;">Moj nalog</h2>
+
+<p class="delete_account"><a href="<?php echo $this->baseUrl()?>/users/updateuser/deleteaccount">Obriši nalog</a></p>
+
+<br />
+<div class="useraccount_personalinfo">
+
+<h3 style="text-decoration:underline;">Lični podaci</h3>
+
+<br />
+<table cellpadding="5" cellspacing="5">
+
+<tr>
+<td>
+<p>
+Ime i prezime: 
+</p>
+</td>
+
+<td>
+<p>
+<?php echo $this->user->first_name ." ".$this->user->last_name; ?>
+</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>
+Korisničko ime: 
+</p>
+</td>
+<td>
+<p>
+<?php echo $this->user->username; ?>
+</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>
+Datum rođenja:
+</p>
+</td> 
+
+<td>
+<p>
+<?php 
+if(isset($this->user->birthdate) && $this->user->birthdate != NULL)
+{	
+	$date = new Zend_Date($this->user->birthdate,$local);
+	echo $date->toString('dd. MMMM yyyy.'); 
+}
+else
+{	
+?>
+	Nije definisan.
+<?php 
+}
+?>
+</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>
+Pol:
+</p>
+</td>
+ 
+ <td>
+ <p>
+<?php 
+if(isset($this->user->sex) && $this->user->sex != NULL)
+{	
+	echo $this->user->sex;
+}
+else
+{	
+?>
+	Nije definisan.
+<?php 
+}
+?>
+</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>
+Zaposlen u: 
+</p>
+</td>
+<td>
+<p>
+<?php 
+if(isset($this->user->employee) && $this->user->employee != NULL)
+{	
+	echo $this->user->employee;
+}
+else
+{	
+?>
+	Nije definisano.
+<?php 
+}
+?>
+</p>
+</td>
+</tr>
+</table>
+<br /><br />
+<p><a href='<?php echo $this->baseUrl()?>/users/updateuser/updatepersonalinfo'>Promeni Lične podatke</a></p>
+<p><a href='<?php echo $this->baseUrl()?>/users/updateuser/updateusername'>Promeni korisničko ime</a></p>
+<?php 
+if($this->recovery)
+{
+?>
+<p style="color:red;">
+<a style="margin:0;color:red;" href='<?php echo $this->baseUrl()?>/users/updateuser/updatepassword'>
+Trenutno koristite privremenu lozinku, molimo 
+<br />Promenite lozinku</a>
+</p>
+<?php 		
+}
+else
+{
+?>
+<p><a href='<?php echo $this->baseUrl()?>/users/updateuser/updatepassword'>Promeni lozinku</a></p>
+<?php 
+}
+?>
+</div>
+
+<div class="useraccount_contactinfo">
+<h3 style="text-decoration:underline;">Kontakt informacije</h3>
+<br />
+<table cellpadding="5" cellspacing="5">
+
+
+
+<?php 
+if($this->emailConfirmed == NULL)
+{
+?>
+<tr>
+<p style="color:red;">
+Email adresa: <?php echo $this->user->email; ?> nije potvrđena.
+</p>
+</tr>
+<?php 
+}
+else
+{
+?>
+<tr>
+<td>
+<p>Email adresa:</p>
+</td>
+
+<td> 
+<p>
+<?php echo $this->user->email; ?>
+</p>
+</td>
+</tr>
+<?php 
+}
+?>
+<tr>
+<td>
+<p>Mobilni telefon: </p>
+</td>
+<td>
+<p>
+<?php 
+if(isset($this->user->phone_mobile) && $this->user->phone_mobile != NULL)
+{	
+	echo $this->user->phone_mobile;
+}
+else
+{	
+?>
+	Nije definisano.
+<?php 
+}
+?>
+</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>Fiksni telefon: </p>
+</td>
+<td>
+<p>
+<?php 
+if(isset($this->user->phone_home) && $this->user->phone_home != NULL)
+{	
+	echo $this->user->phone_home;
+}
+else
+{	
+?>
+	Nije definisano.
+<?php 
+}
+?>
+</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>Fax: </p>
+</td>
+<td>
+<p>
+<?php 
+if(isset($this->user->fax) && $this->user->fax != NULL)
+{	
+	echo $this->user->fax;
+}
+else
+{	
+?>
+	Nije definisano.
+<?php 
+}
+?>
+</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>Adresa: </p>
+</td>
+<td>
+<p>
+<?php 
+if(isset($this->user->address) && $this->user->address != NULL)
+{	
+	echo $this->user->address;
+}
+else
+{	
+?>
+	Nije definisano.
+<?php 
+}
+?>
+</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>Grad: </p>
+</td>
+<td>
+<p>
+<?php 
+if(isset($this->user->city) && $this->user->city != NULL)
+{	
+	echo $this->user->city;
+}
+else
+{	
+?>
+	Nije definisano.
+<?php 
+}
+?>
+</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>Web sajt: </p>
+</td>
+<td>
+<p>
+<?php 
+if(isset($this->user->site) && $this->user->site != NULL)
+{	
+	echo "<a style='margin:0;' href=\"http://".$this->user->site."\"'>".$this->user->site."</a>";
+}
+else
+{	
+?>
+	Nije definisano.
+<?php 
+}
+?>
+</p>
+</td>
+</tr>
+</table>
+<br /><br />
+<p>
+<a href='<?php echo $this->baseUrl();?>/users/updateuser/updatecontactinfo'>Promeni Kontakt informacije</a>
+</p>
+<p>
+<a href='<?php echo $this->baseUrl();?>/users/updateuser/updateemail'>Promeni email adresu</a>
+</p>
+</div>
+
+
+<div class="useraccount_avatarimg">
+<h3 style="text-decoration:underline;">Slika</h3>
+<br />
+
+<?php 
+if(isset($this->user->image_url) && $this->user->image_url != NULL)
+{	
+?>
+<img width="60" alt="<?php echo $this->user->first_name .' '. $this->user->last_name;?>"
+src="<?php echo $this->baseUrl("")."images/userupload/". $this->user->image_url;?>"></img>
+<?php 
+}
+else
+{	
+?>
+	<img width="60" alt="<?php echo $this->user->first_name .' '. $this->user->last_name;?>" src="<?php echo $this->baseUrl("")?>images/userupload/
+<?php 
+	if($this->user->sex == 'Muški')
+		echo 'default_male.png';
+	else
+		echo 'default_female.png';
+?>"
+	" />
+<?php 
+}
+?>
+<br /><br />
+<p>
+<a href='<?php echo $this->baseUrl()?>/users/updateuser/updatepersonalimage'>Promeni Sliku</a>
+</p>
+
+</div>
+
+<div class="useraccount_additionalinfo">
+<h3 style="text-decoration:underline;">Dodatne informacije</h3>
+<br />
+<p>
+<?php 
+if(isset($this->user->description) && $this->user->description != NULL)
+{	
+	echo $this->user->description;
+}
+else
+{	
+?>
+	Nije definisano.
+<?php 
+}
+?>
+</p>
+<br /><br />
+<p>
+<a href='<?php echo $this->baseUrl()?>/users/updateuser/updateadditionalinfo'>Promeni Dodatne informacije</a>
+</p>
+</div>

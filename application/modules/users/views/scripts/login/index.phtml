@@ -1,0 +1,39 @@
+<style>
+<!--
+.account_menu a:HOVER{
+	text-decoration:underline;
+}
+-->
+</style>
+<div class="account_menu">
+<h3>Prijava korisnika</h3>
+<br />
+<p>Molimo popunite formular za login...</p>
+<br />
+<?php 
+if($this->loginMessage == NULL)
+{
+	echo $this->third_form ;//$this->action('index','index','users',array());
+}
+else if($this->loginMessage == 'INVALID POST')
+{
+	echo $this->form_first;
+}
+else if($this->loginMessage == 'INVALID PASSWORD')
+{
+	echo $this->form_second;
+}
+
+?>
+<br />
+<hr></hr>
+<br />
+<p style="font-size:12px;padding:5px;">
+<a style="" href="<?php echo $this->baseUrl();?>/users/recovery">
+Zaboravili ste korisničko ime ili lozinku? 
+</a>
+</p>
+<p style="font-size:12px;margin:5px;">Nemaš nalog  -
+<a href="<?php echo $this->baseUrl();?>/users/registration">Registruj se</a>
+</p>
+</div>

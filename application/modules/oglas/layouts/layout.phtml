@@ -1,0 +1,119 @@
+<?php
+
+echo '<?xml version="1.0" encoding="UTF-8" ?>';
+echo $this->doctype ();
+?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+
+<?php
+$this->loadSkin ( $this->skin );
+?>
+<?php
+echo $this->headMeta ();
+?>
+<?php
+echo $this->headTitle ();
+?>
+<?php
+echo $this->headStyle ();
+?>
+<?php
+echo $this->headLink ();
+?>
+		
+<link rel="shortcut icon" href="/favicon.ico" type="image/ico" />
+
+<?php
+$this->headScript ()->prependFile ( $this->baseUrl ( '/jquery/jquery.js', 'text/javascript' ) );
+$this->headScript ()->prependFile ( $this->baseUrl ( '/jquery/jquery.lightbox-0.5.js', 'text/javascript' ) );
+?>
+<meta name="google-site-verification" content="1BjY2Dcc8QqExUBYl-Q0grih25hYxK-AQHceAfFgssQ" />
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-24094500-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</head>
+<body>
+
+	<div id="pageWrapperBorder">
+		<div id="pageWrapper">
+			<div id="header">
+				<div class="borderWrapperLine"></div>
+				<div id="logo">
+					<h1>
+						<a href="/">Niski oglasi, kupujem, prodajem, potreban, stan,
+							mobilni telefon, kuca, nekretnine</a>
+					</h1>
+				</div>
+			</div>
+			<div id="main_navigation">
+				<div class="clear"></div>
+				<ul>
+					<li><a href="/oglasi">Oglasi</a></li>
+					<li><a href="/oglas/unosoglasa">Dodaj oglas</a></li>
+					<li><a href="/kontakt">Kontakt</a></li>
+				</ul>
+
+			</div>
+			<br>
+			<div id="content">
+				<?php if (!Zend_Controller_Front::getInstance ()->getRequest ()->getControllerName () == "unosoglasa") {?>
+				<div id="left_side_bar">
+					<?php if (Zend_Controller_Front::getInstance ()->getRequest ()->getControllerName () == "oglasi") {?>
+					<h3>
+						<span>KATEGORIJE OGLASA</span>
+					</h3>
+					<?php echo $this->layout()->nav;?>
+					<?php }?>
+
+				</div>
+				<?php }?>
+				<div id="center_bar" <?php if (Zend_Controller_Front::getInstance ()->getRequest ()->getControllerName () == "unosoglasa") {?>  style="width: 730px; border-left: none;"  <?php }?>>
+					<noscript>
+						<div
+							style="padding: 5px; margin: 10px; border: 1px solid #363; background: #dda;">
+							<h2>Nije uključen javascript!</h2>
+							<p>Molimo Vas uključite javascript....</p>
+						</div>
+					</noscript>
+					<?php echo $this->layout ()->content;?>
+					&nbsp;
+				</div>
+				<div id="right_side_bar" style="height: 500px;">
+					<iframe style="height: 1000px;"
+						src="http://www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2Fpages%2FOglasi-Nis%2F149693898430143&amp;width=190&amp;colorscheme=light&amp;show_faces=true&amp;border_color&amp;stream=true&amp;header=false&amp;height=500"
+						scrolling="no" frameborder="0"
+						style="border:none; overflow:hidden; width:190px; height:500px;"
+						allowTransparency="true"></iframe>
+				</div>
+				<div id="foother">
+				<?php echo $this->layout ()->footer = $this->action ( 'index', 'footer', 'vlasotince', array () );?>
+				</div>
+				<div class="footer_kruks">
+					<p style="color: blue; text-align: center; font-style: italic;">
+						<a style="text-decoration: none;"
+							href="<?php echo $this->baseUrl ();?>"><em>Oglasi Niš</em> </a> <br />
+						<em style="color: #000;">Design by</em> <a
+							href="http://www.kruksoft.com">Kruksoft</a>
+					</p>
+				</div>
+
+			</div>
+		</div>
+		<div class="clear"></div>
+
+</body>
+</html>
+<?php
+	//echo Zend_Date::now()->toString('dd-MM-yyyy');
+	?>

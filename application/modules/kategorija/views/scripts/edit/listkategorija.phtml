@@ -1,0 +1,64 @@
+<h3>Kategorije </h3>
+<p><a href='<?php
+echo $this->baseUrl();
+ ?>/kategorija/edit/createkategorija'>Kreiraj novu kategoriju</a></p>
+<?php
+if($this->kategorije != null){ 
+
+?>
+<style>
+<!--
+.kategorija
+{
+	margin:10px;
+	padding:5px;
+	font-size:12px;
+}
+.kategorija th{
+	border-top:1px solid black;
+	border-left:1px solid black;
+	border-bottom:1px solid black;
+	background:#ccc;
+	padding:5px;
+}
+.kategorija td{
+	border-left:1px solid black;
+	border-bottom:1px solid black;
+	padding:5px;
+}
+
+.kategorija a{
+	font-style:italic;
+margin:5px 10px;
+}
+-->
+</style>
+<table class='kategorija' cellpadding='5' cellspacing='0'>
+	<tr>
+		<th>Kategorija</th>
+		<th style="border-right:1px solid black;">Opcije</th>
+	</tr>
+	
+<?php	foreach($this->kategorije as $kategorija){
+?>
+<tr>
+<td><?php echo $kategorija->name; ?></td>
+	<td style="border-right:1px solid black;">
+	<a href='<?php 
+	echo $this->baseUrl();
+	?>/kategorija/edit/kategorija/id/<?php echo $kategorija->id; ?>'>Izmeni</a>
+	
+	<a href='<?php 
+	echo $this->baseUrl();
+	 ?>/kategorija/edit/deletekategorija/id/<?php echo $kategorija->id; ?>'>Obriši</a>
+	</td>
+	
+</tr>
+<?php } ?>
+	
+</table>
+<?php }else{?>
+<p>Nema kategorija.</p>
+
+<?php }
+?>

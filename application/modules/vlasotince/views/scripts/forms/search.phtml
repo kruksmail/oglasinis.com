@@ -1,0 +1,28 @@
+<form
+	action="<?php
+	echo $this->escape ( $this->element->getAction () );
+	// VAZNO!!! $this->element ti je objekat Zend_From klase koju si napravio,  
+	//a $this je objekat klase Zend_View_Abstract 																	?>"
+	method="<?php
+	echo $this->escape ( $this->element->getMethod () )?>"
+	name="<?php
+	echo $this->escape ( $this->element->getName () )?>"
+	id="quick_search">
+<table>
+	<tr>
+		<th>Ponuda/potražnja</th>
+		<th>Grad</th>
+		<th>Cena</th>
+		<th>od</th>
+		<th>do</th>
+		<th>Cena od</th>
+		<th>Sortirano po</th>
+	</tr>
+	<tr>
+	<td><?php echo $this->element->ponudatraznja;?></td>
+	<td><?php echo $this->element->grad;?></td>
+	<td><?php echo $this->element->cenaod;?></td>
+	<td><?php echo $this->element->cenado;?></td>
+	</tr>
+</table>
+</form>

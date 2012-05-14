@@ -1,0 +1,18 @@
+<style>
+<!--
+.privacy{
+	margin:10px;
+	padding:5px;
+	font-size:1.2em;
+}
+-->
+</style>
+<div class="privacy">
+<h2>Privatnost</h2>
+<br />
+<?php 
+	echo $this->form;
+	print_r($this->error);
+?>
+<a href="<?php echo $this->baseUrl();?>/users/useraccount">Nazad</a>
+</div>

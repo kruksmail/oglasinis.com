@@ -1,0 +1,19 @@
+<?php
+$this->layout()->nav = $this->action('index','index','kategorija',
+array('kategorija'=> $this->kategorija, 'podkategorija' => $this->podkategorija));
+
+$provera = $this->action('provera','index','kategorija',
+array('kategorija'=> $this->kategorija, 'podkategorija' => $this->podkategorija));
+
+?>
+<?php if($this->messageProcessed && $this->sendMsg){ ?>
+	<p>
+		Sorry, there is error on application. You can contact as directly on
+		email:<strong>kruksmail@gmail.com</strong> for more information.
+	</p>
+	<?php } elseif(!$this->messageProcessed && $this->sendMsg) {?>
+	<p>Thank you for contact as.</p>
+	<?php } else {?>
+	<p>Fill fields and click the "Send message"</p>
+	<?php echo $this->form; } ?>
+	<div class="clear"></div>

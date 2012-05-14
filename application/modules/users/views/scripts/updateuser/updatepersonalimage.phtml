@@ -1,0 +1,31 @@
+<h2>Promena slike</h2>
+<br />
+<?php 
+if(isset($this->user->image_url) && $this->user->image_url !== NULL)
+{	
+?>
+<img style="margin:10px;" width="60" alt="<?php echo $this->user->first_name .' '. $this->user->last_name;?>"
+src="<?php echo $this->baseUrl("")."images/userupload/". $this->user->image_url;?>"></img>
+<?php 
+}
+else
+{	
+?>
+	<img style="margin:10px;" width="60" alt="<?php echo $this->user->first_name .' '. $this->user->last_name;?>" src="<?php echo $this->baseUrl("")?>images/userupload/
+<?php 
+	if($this->user->sex == 'Muški')
+		echo 'default_male.png';
+	else
+		echo 'default_female.png';
+?>"
+	" />
+<?php 
+}
+?>
+<?php
+echo $this->message;
+echo $this->form;
+?>
+<p>
+<a style="margin:0;" href='<?php echo $this->baseUrl(); ?>/users/useraccount'>Nazad</a>
+</p>

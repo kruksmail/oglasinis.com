@@ -1,0 +1,23 @@
+<h2>Oporavak naloga</h2>
+<br />
+<?php 
+if($this->sent === TRUE)
+{
+?>
+<p>
+Poruka sa podacima za oporavak naloga je poslata na <?php echo $this->email; ?>.
+
+</p>
+<?php 
+}
+else
+{
+?>
+<p>Molimo unesite email adresu koju ste koristili za registraciju. Biće vam poslata poruka koja
+sadrži privremenu lozinku. Strogo je preporučeno da nakon reaktivacije vašeg naloga promenite lozinku.</p>
+<br />
+<?php 
+echo $this->form;
+echo $this->error;
+}
+?>

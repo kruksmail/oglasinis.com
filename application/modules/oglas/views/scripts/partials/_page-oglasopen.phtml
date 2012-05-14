@@ -1,0 +1,178 @@
+<script type="text/javascript">
+var addthis_config = {
+     ui_language: "sr"
+}
+</script>
+<div class="mainVelikiPrikaz_Oglas">
+
+<div class="naslovVelikiPrikaz_Oglas">
+<p class="nasloviMainVelikiPrikaz_Oglas">
+<?php
+echo $this->escape ( $this->naslov );
+?>
+</p>
+
+</div>
+<div class="naslovVelikiPrikaz_Oglas">
+<p class="nasloviVelikiPrikaz_Oglas"><span>Cena: </span>
+<?php
+if ($this->cena == 0) {
+	echo "Po dogovoru";
+} else {
+	echo $this->escape ( $this->cena ) . " " . $this->escape ( $this->valuta );
+}
+
+?>
+</p>
+
+</div>
+
+
+<div class="detaljiVelikiPrikaz_Oglas"  style="text-align: left ; height: auto; min-height:  312px;"><span>Tekst oglasa: </span>
+<br />
+<p style="font-size:14px; margin:5px; padding:0;"><?php
+echo $this->escape ( $this->detalji );
+?>
+</p>
+</div>
+
+<div id="slikeOglasaPrikaz"><img
+	src="<?php
+	echo $this->escape ( $this->baseUrl ( $this->glavna_slika ) );
+	?>"
+	alt="OGLASI" name="bz" class="slika" id="bz" width="435" height="300">
+<img
+	src="<?php
+	echo $this->escape ( $this->baseUrl ( $this->glavna_slika ) );
+	?>"
+	alt="OGLASI" name="b3" class="slikaMala" id="b3"
+	onclick="MM_swapImage('bz','','<?php
+	echo $this->escape ( $this->baseUrl ( $this->glavna_slika ) );
+	?>',0)"
+	width="70" height="70"> <img
+	src="<?php
+	echo $this->escape ( $this->baseUrl ( $this->slika_dva ) );
+	?>"
+	alt="OGLASI" name="b1" class="slikaMala" id="b1"
+	onclick="MM_swapImage('bz','','<?php
+	echo $this->escape ( $this->baseUrl ( $this->slika_dva ) );
+	?>',0)"
+	width="70" height="70"> <img
+	src="<?php
+	echo $this->escape ( $this->baseUrl ( $this->slika_tri ) );
+	?>"
+	alt="OGLASI" name="b2" class="slikaMala" id="b2"
+	onclick="MM_swapImage('bz','','<?php
+	echo $this->escape ( $this->baseUrl ( $this->slika_tri ) );
+	?>',0)"
+	width="70" height="70"> <img
+	src="<?php
+	echo $this->escape ( $this->baseUrl ( $this->slika_cetri ) );
+	?>"
+	alt="OGLASI" name="b3" class="slikaMala" id="b3"
+	onclick="MM_swapImage('bz','','<?php
+	echo $this->escape ( $this->baseUrl ( $this->slika_cetri ) );
+	?>',0)"
+	width="70" height="70"></div>
+
+
+<div class="fbShare_Oglas"><!-- AddThis Button BEGIN -->
+Podeli oglas sa drugima
+<div class="addthis_toolbox addthis_default_style addthis_32x32_style";style="margin-left:30px;">
+<a class="addthis_button_preferred_1"></a> <a
+	class="addthis_button_preferred_2"></a> <a
+	class="addthis_button_preferred_3"></a> <a
+	class="addthis_button_preferred_4"></a> <a
+	class="addthis_button_compact"></a></div>
+<script type="text/javascript">var addthis_config = {"data_track_clickback":true};</script>
+<script type="text/javascript"
+	src="http://s7.addthis.com/js/250/addthis_widget.js#username=kruksmail"></script>
+<!-- AddThis Button END --></div>
+
+<div class="kontaktVelikiPrikaz_Oglas"><span>Kontakt: </span>
+<div class="naslovVelikiPrikaz_Oglas">
+<p class="nasloviVelikiPrikaz_Oglas"><span>Telefoni:</span>
+<?php
+echo $this->escape ( $this->telefoni );
+?>
+</p>
+</div>
+
+<?php if($this->adresa){?>
+<div class="naslovVelikiPrikaz_Oglas">
+<p class="nasloviVelikiPrikaz_Oglas"><span>Adresa: </span>
+<?php
+echo $this->escape ( $this->adresa );
+?>
+</p>
+</div>
+<?php 
+}
+if($this->grad)
+{
+?>
+<div class="naslovVelikiPrikaz_Oglas">
+<p class="nasloviVelikiPrikaz_Oglas"><span>Grad: </span>
+<?php
+echo $this->escape ( $this->grad );
+?>
+</p>
+</div>
+<?php 
+}
+if($this->email)
+{
+?>
+<div class="naslovVelikiPrikaz_Oglas">
+<p class="nasloviVelikiPrikaz_Oglas"><span>Email: </span>
+<?php
+echo $this->escape ( $this->email );
+?>
+</p>
+</div>
+<?php 
+}
+if($this->sajt)
+{
+?>
+<div class="naslovVelikiPrikaz_Oglas">
+<p class="nasloviVelikiPrikaz_Oglas"><span>Sajt: </span>
+<?php
+echo "<a href='http://" . $this->escape ( $this->sajt ) . "'>" . $this->sajt . "</a>";
+?>
+</p>
+</div>
+<?php 
+}
+?>
+</div>
+<?php 
+if(strtotime($this->datum_kreiranja))
+{
+?>
+<div class="naslovVelikiPrikaz_Oglas">
+<p class="nasloviVelikiPrikaz_Oglas"><span>Oglas predat: </span>
+<?php
+echo date("d. m. Y",strtotime($this->datum_kreiranja));
+?>
+</p>
+</div>
+<?php 
+}
+if(strtotime($this->trajanje_oglasa))
+{
+?>
+<div class="naslovVelikiPrikaz_Oglas">
+<p class="nasloviVelikiPrikaz_Oglas"><span>Oglas ističe: </span>
+<?php
+echo date("d. m. Y",strtotime($this->trajanje_oglasa));
+?>
+</p>
+</div>
+<?php
+}
+?>
+
+</div>
+
+

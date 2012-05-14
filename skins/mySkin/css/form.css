@@ -1,0 +1,81 @@
+@CHARSET "ISO-8859-1";
+
+input {
+	width: 150px;
+	margin: 5px;
+}
+
+select {
+	min-width: 100px;
+	margin: 5px;
+}
+
+label {
+	font-size: 12px;
+}
+
+dt label.required:before {
+	content: "* ";
+	color: #ff0000;
+}
+
+ul.errors {
+	padding: 5px 0 5px 25px;
+	color: #ff0000;
+}
+
+table.spreadsheet {
+	margin: 10px 0;
+	border: #999 1px solid;
+}
+
+table.spreadsheet th {
+	background: #ccc;
+	font-weight: bold;
+	font-size: 12px;
+	padding: 5px;
+}
+
+table.spreadsheet td {
+	border-top: #999 1px solid;
+	padding: 5px;
+}
+
+#quick_search {
+	left;
+	margin: 0;
+	padding: 0;
+	width: 200px;
+	height: auto;
+	margin: 0;
+	padding: 0;
+}
+
+#quick_search table {
+	width: 200px;
+	height: auto;
+	margin: 0;
+	padding: 0;
+}
+
+#quick_search table tr {
+	width: 190px;
+	height: 25px;
+	margin: 0;
+	padding: 0;
+}
+
+#quick_search  p {
+	font-size: 18px;
+	color: #3399ff;
+	width: 190px;
+	height: 25px;
+	margin: 0;
+	margin-bottom: -20px;
+	padding: 0;
+}
+
+#quick_search table tr td {
+	margin: 0;
+	padding: 0;
+}

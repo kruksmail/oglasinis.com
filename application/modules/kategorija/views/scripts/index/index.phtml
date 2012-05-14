@@ -1,0 +1,138 @@
+<style>
+<!--
+#kategorija_meni p {
+	padding: 2px 10px;
+	margin: 0;
+	color: #ff6666;
+}
+
+#kategorija_meni {
+	border-bottom: 1px solid #aaa;
+	padding-top: 5px;
+	padding-bottom: 3px;
+	color: #3399ff;
+}
+
+#kategorija_rootul {
+	-moz-border-radius: 5px;
+	border: 1px solid #aaa;
+	padding: 2px;
+	background: transparent;
+	color: #3399ff;
+}
+
+#kategorija_meni ul {
+	padding: 0px;
+	margin: 0;
+}
+
+#kategorija_meni li {
+	margin: 0;
+	padding: 0;
+	color: #3399ff;
+}
+
+#kategorija_meni ul li {
+	padding: 0px;
+	margin: 0;
+	color: #3399ff;
+}
+
+#kategorija_meni h3 {
+	background:url(<?php echo $this->baseUrl();?>/images/buttons/top-spacer.jpg) no-repeat;
+	text-align:left;
+	margin: 0;
+	padding: 5px;
+	height: 30px;
+	background-color: transparent;
+	overflow:hidden;
+	font-size:16px;
+}
+
+#kategorija_meni h3:HOVER {
+	text-decoration: none;
+}
+
+.kategorija a {
+	color: #ff6666;
+	margin: 0;
+	margin-left: 5px;
+	width: 140px;
+	heidth:auto;
+}
+
+#kategorija_meni h3 a:HOVER {
+	text-decoration: none;
+	color: #524e47;
+}
+
+.podkategorija{
+	font-size:14px;
+}
+
+.podkategorija p{
+	font-size:14px;
+}
+	
+.podkategorija a {
+	text-align: left;
+	color: #524e47;
+	font-weight: bold;
+	font-size:12px;
+	overflow:hidden;
+	heidth:auto;
+	margin:0;
+}
+label{
+	font-size:14px;
+	padding:0 5px 0  0;
+	margin:0;
+	overflow:hidden;
+}
+-->
+</style>
+
+			<?php
+			if($this->kategorije != null)
+			{
+				?>
+<div id="kategorija_meni">
+
+<ul id="kategorija_rootul">
+<?php
+foreach ($this->kategorije as $kategorija)
+{
+	?>
+
+	<li class="kategorija_li"
+	<?php
+	if($this->selector1 == $kategorija->id)
+	{
+		?>
+		id="<?php echo $this->selector1;?>" <?php 
+    }
+?>>
+	<h3 class="kategorija"><a
+		href="<?php echo $this->baseUrl();?>/oglasi/index/kategorija/<?php echo $kategorija->id; ?>"
+		<?php
+		if($this->selector1 == $kategorija->id)
+		{
+			?>
+		style="color:#524E47;" 
+		<?php 
+      }
+?>> <?php
+echo $kategorija->name ." (". $this->oglasi->kategorijeCount($kategorija->id) .")";
+
+?> </a></h3>
+</li>
+   <?php
+}
+?>
+
+</ul>
+</div>
+<?php
+			}
+
+			?>

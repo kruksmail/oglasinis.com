@@ -1,0 +1,16 @@
+<tr>
+	<td>
+	<a href='<?php echo $this->baseUrl('/oglasi/index/kategorija/'.$this->id_kategorije.'/podkategorija/'.$this->id_podkategorije.'/oglas/'.$this->id_oglasa);?>'>Pregled</a> | 
+	<a href='<?php echo $this->baseUrl('/oglas/admin/adminizmena/oglas/'.$this->id_oglasa);?>'>Izmeni</a> | 
+	<a href='<?php echo $this->baseUrl('/oglas/admin/adminbrisanje/oglas/'.$this->id_oglasa);?>'>Obrisi</a> 
+	</td>
+	<td><?php
+	echo $this->escape ( $this->naslov );
+	?></td>
+	<td><?php
+echo $this->escape ( " " . substr ( $this->datum_kreiranja, 8, 2 ) . '-' . substr ( $this->datum_kreiranja, 5, 2 ) . "-" . substr ( $this->datum_kreiranja, 0, 4 ) . ". godine" );
+?></td>
+	<td><?php
+	echo $this->escape ( $this->proveren);
+	?></td>
+</tr>

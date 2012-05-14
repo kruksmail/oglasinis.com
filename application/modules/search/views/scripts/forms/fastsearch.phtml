@@ -1,0 +1,24 @@
+
+<form
+	action="<?php
+	echo $this->escape ( $this->element->getAction () );
+	// VAZNO!!! $this->element ti je objekat Zend_From klase koju si napravio,  
+	//a $this je objekat klase Zend_View_Abstract 																	?>"
+	method="<?php
+	echo $this->escape ( $this->element->getMethod () )?>"
+	name="<?php
+	echo $this->escape ( $this->element->getName () )?>"
+	id="quick_search">
+<table>
+	<tr>
+	<?php
+	echo $this->element->query;
+	?>
+	</tr><br>
+	<tr>
+	<?php
+	echo $this->element->submit;
+	?>
+	</tr>
+</table>
+</form>

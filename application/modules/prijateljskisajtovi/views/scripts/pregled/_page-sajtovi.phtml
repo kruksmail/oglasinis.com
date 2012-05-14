@@ -1,0 +1,54 @@
+<div class="mainPrikaz_Prijateljskisajtovi">
+<div class="naslovPrikaz_Prijateljskisajtovi">
+<?php
+
+echo $this->escape ( $this->naslov );
+?>
+</div>
+<div class="linkPrikaz_Prijateljskisajtovi"><a
+	href="<?php
+	echo $this->escape ( " http://" . $this->sajt );
+	?>"><?php
+	echo $this->escape ( $this->sajt );
+	?></a></div>
+<div class="emailPrikaz_Prijateljskisajtovi">
+<?php
+echo $this->escape ( $this->email );
+?>
+</div>
+<p><img alt="Vlasotince Oglasi"
+	src="<?php
+	echo $this->escape ( $this->baseUrl ( $this->slika ) );
+	?>"></p>
+<div class="opisPrikaz_Prijateljskisajtovi">
+<?php
+
+echo $this->escape ( substr ( $this->detalji, 0, 200 ) );
+?>
+</div>
+<?php
+$auth = Zend_Auth::getInstance ();
+if ($auth->hasIdentity ()) {
+	$userID = $auth->getIdentity ()->id;
+	$userRole = $auth->getIdentity ()->role;
+	//echo $userRole;
+} else {
+	$userRole = null;
+	$userID = 0;
+}
+if ($userRole == "Administrator") {
+	?>
+	<div class="emailPrikaz_Prijateljskisajtovi"><a
+	href="<?php
+	echo $this->escape ( $this->baseUrl ( '/prijateljskisajtovi/pregled/editsajt/sajt/' . $this->id_sajta ) );
+	?>">Izmeni</a> <a
+	href="<?php
+	echo $this->escape ( $this->baseUrl ( '/prijateljskisajtovi/pregled/deletesajt/sajt/' . $this->id_sajta ) );
+	?>">Obrisi</a></div>
+	<?php
+
+}
+?>
+
+<div></div>
+</div>

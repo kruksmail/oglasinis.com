@@ -1,0 +1,33 @@
+<h2>Rezultati pretrage</h2>
+<?php 
+if (is_array ( $this->results ) && count ( $this->results ) > 0) {
+	?>
+<p>Za Vašu rec <em><?php
+	echo $this->keywords;
+	?></em> ima ukupno:<?php
+	echo count ( $this->results );
+	?> rezultata.</p><br>
+<?php
+	$i = 1;
+	foreach ( $this->results as $result ) {
+		?>
+<h3><?php
+		echo $i . ".";
+		$i ++;
+		?><a
+	href='<?php
+		echo $this->escape ( $this->baseUrl ( 'oglasi/index/kategorija/' . $result->oglas_id_kategorije . '/podkategorija/' . $result->oglas_id_podkategorije . '/oglas/' . $result->id_oglasa ) );
+		?>'><?php
+		echo $result->oglas_naslov;
+		?></a></h3>
+<p><?php
+		echo $this->escape ( $result->oglas_detalji );
+		?></p><br>
+<?php
+	}
+} else {
+	?>
+<p>Nema rezultata za datu rec</p>
+<?php
+}
+?>

@@ -1,0 +1,41 @@
+@CHARSET "ISO-8859-1";
+
+#mainNav a{
+	padding:10px 5px;
+	margin:0;
+	display:block;
+	font-size:14px;
+	text-decoration:none;
+	text-align:center;
+	background:url('../images/button.png') no-repeat;
+	height:25px;
+	width:120px;
+}
+#mainNav ul{
+	margin: 0;
+	margin-top:5px;
+	margin-left: 100px;
+	padding:0;
+	text-align:center;
+	height:45px;
+}
+#mainNav li{
+	margin:0;
+	padding:0;
+	float:left;
+	text-align:center;
+	display:block;
+	list-style:none;
+	height:45px;
+}
+
+#mainNav a:hover{
+	text-decoration:none;
+}
+#nav li{
+	list-style:none;
+}
+#nav li a:hover{
+	text-decoration:underline;
+}
+

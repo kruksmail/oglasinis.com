@@ -1,0 +1,140 @@
+<?php 
+if($this->user !== NULL)
+{
+$local = new Zend_Locale('sr_Latn_ME');
+?>
+<style>
+<!--
+.avatar_div
+{
+	padding:0px;
+	margin:10px -25px;
+	//background:#aaa;
+	width:200px;
+	min-height:200px;
+	border:1px solid #aaa;
+	-moz-border-radius:5px;
+	text-align:center;
+}
+.avatar_div img
+{
+	margin:5px;
+	max-width:120px;
+	max-height:150px;
+}
+
+.avatar_div table
+{
+	margin:5px auto;
+	width:200px;
+	text-align:left;
+	min-width:100px;
+}
+.avatar_div table td
+{
+	margin:5px;
+	padding:5px;
+}
+-->
+</style>
+<div class='avatar_div'>
+<h3><?php echo $this->user->username; ?></h3>
+<br />
+<img alt="<?php echo $this->user->first_name .' '. $this->user->last_name;?>" src="<?php echo $this->baseUrl("");?>images/userupload/
+<?php 
+if($this->user->image_url == NULL)
+{
+	if($this->user->sex == 'Muški')
+		echo 'default_male.png';
+	else
+		echo 'default_female.png';
+}
+else
+{
+	echo $this->user->image_url;
+}
+?>" / >
+<table cellpadding="10" cellspacing="0">
+<tr>
+<td><p>Ime:</p></td>
+<td><p><?php echo $this->user->first_name; ?>
+</p>
+</td>
+</tr>
+
+<tr>
+<td><p>Prezime:</p></td>
+<td><p>
+<?php echo $this->user->last_name; ?>
+</p>
+</td>
+</tr>
+
+<tr>
+<td><p>Pol:</p></td>
+<td>
+<p><?php echo $this->user->sex; ?>
+</p>
+</td>
+</tr>
+
+<?php
+if($this->customFields != NULL)
+{
+	foreach ($this->customFields as $index => $field)
+	{
+?>
+<tr>
+<td>
+<p>
+<?php 
+		echo $field;
+?>
+:
+</p>
+</td>
+<td>
+<p>
+<?php 
+		if(isset($this->user[$index]) &&  $this->user[$index] !== NULL)
+		{
+			if($index == 'birthdate')
+			{
+				$date = new Zend_Date($this->user[$index],$local);
+				echo $date->toString('dd. MMMM yyyy.'); 
+			}
+			else
+			{
+				echo $this->user[$index];
+			}
+		}
+		else
+		{
+			echo "Nije definisano";
+		}
+?>
+</p>
+</td>
+</tr>
+<?php
+	}
+}
+?>
+<tr>
+<td><p>Prijavljen od:</p></td>
+<td><p>
+<?php 
+$date = new Zend_Date($this->user->signup_date,$local);
+echo $date->toString('dd. MMMM yyyy.'); 
+?>
+</p>
+</td>
+</tr>
+
+</table>
+</div>
+<?php 
+}
+?>
+
+

@@ -1,0 +1,52 @@
+<h1>Svi Vasi oglasi na jednom mestu</h1>
+
+<?php
+
+if ($this->paginator->count () > 0) {
+	?>
+<br>
+<br>
+<?php
+	echo $this->paginationControl ( $this->paginator, 'Sliding', 'partials/_page-adminpaginationcontrol.phtml' );
+	?>
+
+<table class="userListaPrikaz_oglas"  cellpadding='0' cellspacing='0'>
+	<tr>
+		<th>Opcije</th>
+		<th><a
+			href='<?php
+	echo $this->baseUrl ( '/oglas/user/listauser/sort/naslov' );
+	?>'>Naslov oglasa</a></th>
+		<th><a
+			href='<?php
+	echo $this->baseUrl ( '/oglas/user/listauser/sort/datum_kreiranja' );
+	?>'>Datum unosa</a></th>
+	</tr>
+
+
+<?php
+	echo $this->partialLoop ( 'partials/_page-useroglasiprikaz.phtml', $this->paginator );
+	?>
+</table><?php
+	echo $this->paginationControl ( $this->paginator, 'Sliding', 'partials/_page-adminpaginationcontrol.phtml' );
+
+} else {
+	?><br>
+<h2>Nemate unetih oglasa</h2>
+<?php
+}
+?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

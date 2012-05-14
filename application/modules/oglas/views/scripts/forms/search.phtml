@@ -1,0 +1,22 @@
+<form
+	action="<?php
+	echo $this->escape ( $this->element->getAction () );											?>"
+	method="<?php
+	echo $this->escape ( $this->element->getMethod () )?>"
+	name="<?php
+	echo $this->escape ( $this->element->getName () )?>"
+	id="searchForm_oglas">
+	<h2>Pretražite male oglase u ovoj rubrici</h2>	
+	<br>
+<table>
+<?php if($this->element->oblast){?>
+<tr><td>Oblast</td><td><?php echo $this->element->oblast;?></td></tr>
+<?php }?>
+	<tr><td>Ponuda/potražnja</td><td><?php echo $this->element->ponudatraznja;?></td></tr>
+	<tr><td>Grad</td><td><?php echo $this->element->grad;?></td></tr>
+	<tr><td>Cena (EUR)</td><td><?php echo $this->element->cena;?></td></tr>
+	<tr><td>Sortirano po</td><td><?php echo $this->element->sort;?></td></tr>
+</table>
+<br>
+<?php echo $this->element->submit;?>
+</form>

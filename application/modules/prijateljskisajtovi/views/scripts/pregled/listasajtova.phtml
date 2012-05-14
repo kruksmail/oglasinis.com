@@ -1,0 +1,13 @@
+<div style="float:left;">
+<?php
+if ($this->sajtovi != null) {
+	?>
+
+<?php
+	echo $this->partialLoop ( 'pregled/_page-sajtovi.phtml', $this->sajtovi );
+	?>
+
+<?php
+}
+?>
+</div>

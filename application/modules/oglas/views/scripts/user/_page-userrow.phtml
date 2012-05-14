@@ -1,0 +1,18 @@
+<?php
+$kategorijaOglasaModel = new Oglas_Model_UdruzenjeContent ();
+$kat = $kategorijaOglasaModel->getKatById ( $this->id );
+$podkat = $kategorijaOglasaModel->getPodKatById ( $this->id );
+
+
+
+?>
+
+<tr>
+	<td><a href="<?php
+	echo $this->escape ( $this->baseUrl('oglasi/index/kategorija/' . $kat [0]->content . '/podkategorija/'.$podkat [0]->content . '/oglas/' . $this->id ));
+	?>"><?php echo $this->escape ( $this->name)	?></a></td>
+	<td><?php
+	echo $this->escape ( substr ( $this->date_created, 8, 2 ) . '-' . substr ( $this->date_created, 5, 2 ) . '-' . substr ( $this->date_created, 0, 4 ) . ' -- u ' . substr ( $this->date_created, 10, 6 ) )?></td>
+
+
+</tr>

@@ -1,0 +1,105 @@
+<form
+	action="<?php
+	echo $this->escape ( $this->element->getAction () );
+	// VAZNO!!! $this->element ti je objekat Zend_From klase koju si napravio,  
+	//a $this je objekat klase Zend_View_Abstract 													?>"
+	method="<?php
+	echo $this->escape ( $this->element->getMethod () )?>"
+	name="<?php
+	echo $this->escape ( $this->element->getName () )?>"
+	id="<?php
+	echo $this->escape ( $this->element->getAttrib ( 'id' ) );
+	?>">
+<table id="searchForm_oglas">
+	<tr>
+		<p class="ponudapotraznjasearch_Oglas">
+		<td>Tip transkakcije:</td>
+			<?php
+			//echo $this->element->name->getLabel ();
+			?><td>
+			<?php
+			//echo " * ";
+			echo $this->element->ponudatraznja;
+			?></td>
+		</p>
+	</tr>
+	<tr>
+		<p class="gradsearch_Oglas">
+		<td>Grad:
+			<?php
+			//echo $this->element->start->getLabel ();
+			?></td>
+		<td>
+			<?php
+			//echo " * ";
+			echo $this->element->grad;
+			
+			?></td>
+		</p>
+	</tr>
+	<tr>
+		<p class="cenasearch_Oglas">
+		<td>Cena od:</td>
+			<?php
+			//echo $this->element->odrediste->getLabel ();
+			?><td>
+			<?php
+			//echo " * ";
+			echo $this->element->cenaod;
+			
+			?></td>
+		<td>do:</td>
+		<td>
+			<?php
+			//echo $this->element->cenado->getLabel ();
+			?>
+			<?php
+			//echo " * ";
+			echo $this->element->cenado;
+			
+			?></td>
+		<td>valuta:</td>
+		<td>
+			<?php
+			//echo $this->element->odrediste->getLabel ();
+			?>
+			<?php
+			//echo " * ";
+			echo $this->element->valuta;
+			
+			?>
+		
+		
+		
+		
+		
+		
+		</p>
+	</tr>
+	<tr>
+		<td>
+		Dodatni kriterijumi pretrage:
+			<?php
+			//echo $this->element->dodatniUslovi->getLabel ();
+			?>
+			<?php
+			//echo " * ";
+			echo $this->element->dodatniUslovi;
+			?>
+		
+		
+		
+		
+		
+		</td>
+
+	</tr>
+
+	<tr>
+		<td>
+<?php
+echo $this->element->submit;
+?></td>
+	</tr>
+</table>
+</form>

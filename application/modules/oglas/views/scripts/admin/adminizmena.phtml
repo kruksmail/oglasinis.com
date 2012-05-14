@@ -1,0 +1,82 @@
+<?php
+$this->headScript ()->captureStart ();
+?>
+   
+function getPodKategorije() {
+   $.ajax({
+   type: "POST",
+   url: " <?php
+			echo $this->baseUrl ( '/oglas/unosoglasa/renderkategorije' )?>" ,
+   data: "kat="+$("#id_kategorije").val() ,
+   success: function(data){
+     $('#id_podkategorije').html(data)
+   }
+ });    
+}
+$(document).ready(function(){
+getPodKategorije();
+});
+<?php
+$this->headScript ()->captureEnd ();
+
+$this->layout ()->nav = $this->action ( 'index', 'index', 'kategorija', array ('kategorija' => $this->kategorija, 'podkategrija' => $this->podkategorija ) );
+
+?>
+<h1>Promena oglasa</h1>
+&nbsp
+<h2>Polja oznacena zvezdicom su obavezna</h2>
+&nbsp
+<?php
+$auth = Zend_Auth::getInstance ();
+if ($auth->hasIdentity ()) {
+	$userID = $auth->getIdentity ()->id;
+	$userRole = $auth->getIdentity ()->role;
+	$userName = $auth->getIdentity ()->username;
+	//echo $userRole;
+} else {
+	$userRole = null;
+	$userID = 0;
+}
+?>
+<p>IP oglasivaca:<?php
+echo $this->ip;
+?></p>
+<p>ID oglasivaca:<?php
+echo $this->oglasivac;
+?></p>
+<p>Oglas traje do:<?php
+
+echo $this->escape ( substr ( $this->trajanjeoglasa, 8, 2 ) . '-' . substr ( $this->trajanjeoglasa, 5, 2 ) . '-' . substr ( $this->trajanjeoglasa, 0, 4 ) )?></td>
+</p>
+<table class="tabelaSlikaIzmena_Oglas">
+	<tr>
+		<th>Glavna slika</th>
+		<th>Slika dva</th>
+		<th>Slika tri</th>
+		<th>Slika cetri</th>
+	</tr>
+	<tr>
+		<td><img class='slikaIzmena_Oglas'
+			src='<?php
+echo $this->baseUrl($this->glavna_slika);;
+?>'></img></td>
+		<td><img class='slikaIzmena_Oglas'
+			src='<?php
+echo $this->baseUrl($this->slika_dva);;
+?>'></img></td>
+		<td><img class='slikaIzmena_Oglas'
+			src='<?php
+echo $this->baseUrl($this->slika_tri);;
+?>'></img></td>
+		<td><img class='slikaIzmena_Oglas'
+			src='<?php
+echo $this->baseUrl($this->slika_cetri);;
+?>'></img></td>
+	</tr>
+
+</table>
+<?php
+
+echo $this->form;
+
+?>

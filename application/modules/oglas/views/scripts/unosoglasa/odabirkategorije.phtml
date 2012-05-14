@@ -1,0 +1,59 @@
+<div class="odabir_kategorija">
+	<h3>
+		<span>Odaberite kategoriju</span>
+	</h3>
+	<br>
+	<br>
+</div>
+<?php
+if ($this->kategorije != null) {
+	?>
+
+	<?php
+	foreach ( $this->kategorije as $kategorija ) {
+		?>
+<div class="kategorijeZaUnosWrapper_Oglas">
+	<h2 class="ispisKategorijeZaOdabir_Oglas">
+
+	<?php
+	echo $kategorija->name;
+	?>
+	</h2>
+	<ul class="odabirKategorije_Oglas">
+		<li><?php
+		if (isset ( $this->podkategorije [$kategorija->name] )) {
+			foreach ( $this->podkategorije [$kategorija->name] as $podkategorija ) {
+				?>
+		
+		<li class="odabirPodKategorije_Oglas"><a
+			href="<?php
+				echo $this->baseUrl () . "/oglas/unosoglasa/index/kategorija/" . $kategorija->id . "/podkategorija/" . $podkategorija->id;
+				?>"
+				<?php
+				if (($this->selector1 == $kategorija->id) && ($this->selector2 == $podkategorija->id)) {
+					?>
+			style="font-size: bold; color: black;" <?php
+			}
+			?>> <?php
+			$_SESSION ["podkategorija"] [$podkategorija->label] = $podkategorija->label;
+			echo $podkategorija->label;
+			?> </a></li>
+			<?php
+			}
+		}
+		?>
+		</li>
+
+		<br />
+	</ul>
+</div>
+
+		<?php
+	}
+	?>
+	<?php
+}
+//print_r($this->req);
+
+
+?>
