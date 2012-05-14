@@ -20,7 +20,7 @@ define('DS', DIRECTORY_SEPARATOR);
  */
 
 define('ZEND_LIBRARY_PATH', realpath('../../library'));
-define('APPLICATION_PATH', realpath('../application/' ));
+define('APPLICATION_PATH', realpath('./application' ));
 define('APP_LIBRARY_PATH', APPLICATION_PATH . '/library');
 define('APP_PUBLIC', realpath('./'));
 
