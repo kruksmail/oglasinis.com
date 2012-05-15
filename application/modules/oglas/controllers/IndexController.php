@@ -124,8 +124,7 @@ class Oglas_IndexController extends Oglas_Library_Controller_Action_Abstract
 		$oglasID = $this->_request->getParam ( "oglas" );
 		$this->view->oglas = $oglasID;
 		$sortKriterijum = null;
-		$this->view->headMeta ()->prependName ( "Description", $imekat . " Niš - Besplatni mali oglasi. Svi niški oglasi na jednom mestu. Dodjite, pronadjite, kupite, prodajte" );
-      
+		
 		$kategorijeModel = new Kategorija_Model_Glavnekategorije();
       foreach ($kategorijeModel->getKategorije() as $katRow)
       {
@@ -202,6 +201,20 @@ class Oglas_IndexController extends Oglas_Library_Controller_Action_Abstract
 			}
 		}
 
+		$this->view->headTitle ()->prepend("$imekat ");
+		if($podkategorije[$params['oblast']])
+		{
+		   $this->view->headMeta ()->prependName ( "Description", $podkategorije[$params['oblast']] ." ". $imekat 
+		         . " Niš - Besplatni mali oglasi. Svi niški oglasi na jednom mestu. Dodjite, pronadjite, kupite, prodajte" );
+      
+		   $this->view->headTitle ()->prepend($podkategorije[$params['oblast']]);
+		   $this->view->podkategorija = $podkategorije[$params['oblast']];
+		}
+		else
+		{
+		   $this->view->headMeta ()->prependName ( "Description", $imekat . " Niš - Besplatni mali oglasi. Svi niški oglasi na jednom mestu. Dodjite, pronadjite, kupite, prodajte" );
+		   $this->view->podkategorija = "";
+		}
 		$this->view->params = $params;
 		
 		$adapter = $oglasModel->getAll ( $whereKriterijumi, $sortKriterijum );
@@ -213,7 +226,7 @@ class Oglas_IndexController extends Oglas_Library_Controller_Action_Abstract
 		$this->view->paginator = $paginator;
 		$this->view->searchForm = $searchForm;
 
-		$this->view->headTitle ()->prepend("$imekat ");
+		
 		$this->view->headTitle ()->append ( 'Besplatni mali oglasi Niš. Svi niški oglasi na jednom mestu' );
 	}
 	/*

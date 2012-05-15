@@ -19,7 +19,7 @@
 	.gallery ul a:hover { color: #fff; }
 </style>
 <h1><?php
-echo $this->kategorija ."<br>";//" - Oglasi Niš&nbsp;<br>";
+echo ($this->podkategorija ? $this->podkategorija ." - " : "") . $this->kategorija ." - Oglasi Niš&nbsp;<br>";
 ?></h1>
 <?php
 $dateTemp = new DateTime ( "", new DateTimeZone ( 'Europe/Belgrade' ) );
