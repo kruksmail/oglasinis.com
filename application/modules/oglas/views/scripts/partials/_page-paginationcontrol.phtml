@@ -2,17 +2,6 @@
 Strana: <?php echo $this->current; ?> / <?php echo $this->pageCount; ?>
 <br>
 <?php
-if ($this->pageCount) 
-{
-	// remove the system parameters
-	unset ( $this->params ['module'] );
-	unset ( $this->params ['controller'] );
-	unset ( $this->params ['action'] );
-	unset ( $this->params ['cenaod'] );
-	unset ( $this->params ['cenado'] );
-	unset ( $this->params ['valuta'] );
-	unset ( $this->params ['submit'] );
-}
 
 if($this->pageCount > 1)
 {

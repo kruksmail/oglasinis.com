@@ -25,16 +25,33 @@ echo ($this->podkategorija ? $this->podkategorija ." - " : "") . $this->kategori
 $dateTemp = new DateTime ( "", new DateTimeZone ( 'Europe/Belgrade' ) );
 $date = strtotime ( "+0 day", strtotime ( date ( $dateTemp->format ( 'd-m-Y' ) ) ) );
 $datum = date ( "Y-m-d", $date );
-if ($this->paginator->count () > 0) 
+if ($this->paginator->count() > 0) 
 {
-	?>
+   // remove the system parameters
+	unset ( $this->params ['module'] );
+	unset ( $this->params ['controller'] );
+	unset ( $this->params ['action'] );
+	unset ( $this->params ['cenaod'] );
+	unset ( $this->params ['cenado'] );
+	unset ( $this->params ['valuta'] );
+	unset ( $this->params ['submit'] );
+?>
 <div id="formaKriterijumi_Oglas">
 <?php
 	echo $this->searchForm;
-	
-	?></div>
+?>
+</div>
 <?php
-	echo $this->partialLoop ( 'partials/_page-oglasiprikaz.phtml', $this->paginator );
+   echo  "<div class='paginationControl_Oglas'>"
+         ."Prikazano: ". ( ($this->params["page"] ? ($this->params["page"] - 1) : 0) * 10 + 1) 
+         ." - ". ( ($this->params["page"] ? ($this->params["page"] - 1) : 0)  * 10 + $this->paginator->getCurrentItemCount())
+         . " od ". number_format($this->paginator->getTotalItemCount()) . " oglasa "
+         ."<br>";
+   echo "Strana: " . ($this->params["page"] > 1 ? ($this->params["page"] - 1) : 1)
+      . " / ". $this->paginator->count()
+      . "<br></div><br>";
+      
+   echo $this->partialLoop ( 'partials/_page-oglasiprikaz.phtml', $this->paginator );
 	echo $this->paginationControl ( $this->paginator, 'Sliding', 'partials/_page-paginationcontrol.phtml', array("params" => $this->params) );
 
 } else {

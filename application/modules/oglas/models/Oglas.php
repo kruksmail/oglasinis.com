@@ -50,7 +50,19 @@ class Oglas_Model_Oglas extends Zend_Db_Table_Abstract {
 
 	   if($dinar < 60 || $dinar > 200)
 	      $dinar = 100;
-		$select = $this->select ();
+	      
+	   $cena_sort = false;
+	   if( in_array( $sortKriterijum, array( "cena ASC", "cena DESC" ) ) )
+	   {
+	      $cena_sort = true;
+	      $select = $this->select ()
+	                     ->from($this->_name, "*, IF(valuta = 'EUR',cena*'{$dinar}',cena) AS konvertovano");
+	   }
+	   else
+	   {
+		   $select = $this->select ();
+	   }
+
 		foreach ( $whereKriterijumi as $key => $value ) 
 		{
 		   if($key == "cena")
@@ -93,24 +105,34 @@ class Oglas_Model_Oglas extends Zend_Db_Table_Abstract {
 	            $select->where ( "$key = ?", $value );
 		   }
 		}
-
-		$oglasModel = new self ();
 		
 		$datum = date ( "Y-m-d" , strtotime("-2 month")) ." 00:00:00";
       $select->where ( "datum_kreiranja >= ?", $datum );
 
       if( in_array( $sortKriterijum, array( "cena ASC", "cena DESC", "naslov" ) ) )
-		   $select->order ( "$sortKriterijum" );
+      {
+         if($cena_sort)
+         {
+            if( $sortKriterijum == "cena ASC")
+               $select->order ( "konvertovano ASC" );
+            else
+               $select->order ( "konvertovano DESC" );
+         }
+         else
+         {
+		      $select->order ( $sortKriterijum );
+         }
+      }
 		else 
+		{
 		   $select->order ( "datum_kreiranja DESC" );
+		}
 		$adapter = new Zend_Paginator_Adapter_DbTableSelect ( $select );
 		return $adapter;
 	}
 	public function getAllForAdmin($sortKriterijum) {
 		
 		$select = $this->select ();
-		
-		$oglasModel = new self ();
 		
 		$select->order ( "$sortKriterijum" );
 		
@@ -121,7 +143,6 @@ class Oglas_Model_Oglas extends Zend_Db_Table_Abstract {
 		
 		$select = $this->select ();
 		
-		$oglasModel = new self ();
 		$select->where ( "oglasivac = ?", $id_usera );
 		
 		$select->order ( "$sortKriterijum" );
