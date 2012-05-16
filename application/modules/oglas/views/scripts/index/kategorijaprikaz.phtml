@@ -47,7 +47,7 @@ if ($this->paginator->count() > 0)
          ." - ". ( ($this->params["page"] ? ($this->params["page"] - 1) : 0)  * 10 + $this->paginator->getCurrentItemCount())
          . " od ". number_format($this->paginator->getTotalItemCount()) . " oglasa "
          ."<br>";
-   echo "Strana: " . ($this->params["page"] > 1 ? ($this->params["page"] - 1) : 1)
+   echo "Strana: " . ($this->params["page"] > 1 ? $this->params["page"] : 1)
       . " / ". $this->paginator->count()
       . "<br></div><br>";
       
