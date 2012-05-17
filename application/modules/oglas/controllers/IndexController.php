@@ -44,7 +44,10 @@ class Oglas_IndexController extends Oglas_Library_Controller_Action_Abstract
       $podkategorijaModel = new Kategorija_Model_Podkategorije();
       foreach ($podkategorijaModel->getPodkategorije() as $podkatRow)
       {
-         $podkategorije[$podkatRow["id"]] = $podkatRow;
+         $podkategorije[$podkatRow->id] = array("id" => $podkatRow->id,
+                                                "label" => $podkatRow->label,
+                                                "kategorija" => $podkatRow->kategorija   
+                                             );
       }
 
       unset($params);
@@ -130,17 +133,25 @@ class Oglas_IndexController extends Oglas_Library_Controller_Action_Abstract
       {
          $kategorije[$katRow["id"]] = $katRow["name"];
       }
+      
+      unset($podkat_count);
+      $oglasModel = new Oglas_Model_Oglas();
       $podkategorijaModel = new Kategorija_Model_Podkategorije();
       foreach ($podkategorijaModel->getPodkategorije() as $podkatRow)
       {
-         $podkategorije[$podkatRow["id"]] = $podkatRow;
+         $podkategorije[$podkatRow->id] = array("id" => $podkatRow->id,
+                                                "label" => $podkatRow->label,
+                                                "kategorija" => $podkatRow->kategorija,
+                                                "count" => $oglasModel->podkategorijeCount($podkatRow->id)
+                                             );
       }
+      
 		$this->view->kategorije = $kategorije;
 		$this->view->podkategorije = $podkategorije;
 		
 		$page = $this->_request->getParam ( 'page' );
 		$searchForm = new Oglas_Form_Search ($kategorija);
-		$oglasModel = new Oglas_Model_Oglas ();
+		
 		$oglasModelCount = new Oglas_Model_Oglas ();
 		$whereKriterijumi = array ();
 		$whereKriterijumi ["id_kategorije"] = $kategorija;

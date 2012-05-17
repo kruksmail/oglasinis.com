@@ -49,20 +49,23 @@ if ($this->paginator->count() > 0)
          ."<br>";
    echo "Strana: " . $current_page
       . " od ". $this->paginator->count()
-      . "<br><br>";
+      . "<br>";
     
    if($current_page > 1)
    {
-      echo "<a title='Prva strana' href=\"". 
-         $this->url ( array_merge ( $this->params, array ('page' => 1 ) ) ) ."\">&laquo;&laquo; Prva</a>";
+      if($this->paginator->count() > 3)
+         echo "<a title='Prva strana' href=\"". 
+            $this->url ( array_merge ( $this->params, array ('page' => 1 ) ) ) ."\">&laquo;&laquo; Prva</a>";
           
       echo "<a title='Prethodna strana' href=\"". 
-          $this->url ( array_merge ( $this->params, array ('page' => ($current_page - 1) ) ) ) ."\">&laquo; Prethodna</a>";
+         $this->url ( array_merge ( $this->params, array ('page' => ($current_page - 1) ) ) ) ."\">&laquo; Prethodna</a>";
    }
    else 
    {
-      echo "<a title='Prva strana' style='color:black;'>&laquo;&laquo; Prva</a>";
-      echo "<a title='Prethodna strana' style='color:black;'>&laquo; Prethodna</a>";
+      if($this->paginator->count() > 3)
+         echo "<a title='Prva strana' style='color:#524E47;'>&laquo;&laquo; Prva</a>";
+
+      echo "<a title='Prethodna strana' style='color:#524E47;'>&laquo; Prethodna</a>";
    }
    
    if($current_page < $this->paginator->count())
@@ -70,13 +73,15 @@ if ($this->paginator->count() > 0)
       echo "<a title='Sledeća strana' href=\"". 
           $this->url ( array_merge ( $this->params, array ('page' => ($current_page + 1) ) ) ) ."\">Sledeća &raquo;</a>";
           
-      echo "<a title='Poslednja strana' href=\"". 
-          $this->url ( array_merge ( $this->params, array ('page' => $this->paginator->count() ) ) ) ."\">Poslednja &raquo;&raquo;</a>";
+      if($this->paginator->count() > 3)
+         echo "<a title='Poslednja strana' href=\"". 
+            $this->url ( array_merge ( $this->params, array ('page' => $this->paginator->count() ) ) ) ."\">Poslednja &raquo;&raquo;</a>";
    }
    else
    {
-      echo "<a title='Sledeća strana' style='color:black;'>Sledeća &raquo;</a>";
-      echo "<a title='Poslednja strana' style='color:black;'>Poslednja &raquo;&raquo;</a>";
+      echo "<a title='Sledeća strana' style='color:#524E47;'>Sledeća &raquo;</a>";
+      if($this->paginator->count() > 3)
+         echo "<a title='Poslednja strana' style='color:#524E47;'>Poslednja &raquo;&raquo;</a>";
    }
 
    echo "<br><br></div>";

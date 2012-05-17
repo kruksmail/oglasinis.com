@@ -45,62 +45,70 @@ if ($this->paginator->count() > 0)
 ?>
 </div>
 <?php
+   echo "<div class='paginationControl_Oglas'>";
    //ispis podkategorija
-   foreach ($this->podkategorije as $id => $dbRow)
+   if(count($this->podkategorije) > 0)
+      echo "<div style='float:left;'>";
+   foreach ($this->podkategorije as $id => $aRow)
    {
-      if($this->kategorijaID == $dbRow["kategorija"])
+      if($this->kategorijaID == $aRow["kategorija"])
       {
          if($this->params["oblast"] == $id)
          {
-            echo "<a style='color:#000;'>". $dbRow["label"] ."</a> ";
+            echo "<a style='float:left; color:#524E47;'>". $aRow["label"] ." ("
+               . number_format($aRow["count"]) .")</a> ";
          }
          else
          {
-            echo "<a href=\"{$this->baseUrl()}/oglasi/index/kategorija/{$this->kategorijaID}/oblast/{$id}\">". $dbRow["label"] ."</a> ";
+            echo "<a style='float:left;'href=\"". $this->baseUrl() ."/oglasi/index/kategorija/{$this->kategorijaID}/oblast/{$id}\">"
+                  . $aRow["label"] ." (".number_format($aRow["count"]).")</a> ";
          }
       }
    }
    if(count($this->podkategorije) > 0)
-      echo "<br><br>";
+      echo "</div>";
    //ispis navigacije
    $current_page = ($this->params["page"] ? $this->params["page"] : 1);
-   echo  "<div class='paginationControl_Oglas'>"
-         ."Prikazano: ". ( ($current_page - 1) * 10 + 1) 
+   echo  "<div class='paginationControl_Oglas' style='float:left;text-align:center;'><br>Prikazano: ". ( ($current_page - 1) * 10 + 1) 
          ." - ". ( ($current_page - 1) * 10 + $this->paginator->getCurrentItemCount())
          . " od ". number_format($this->paginator->getTotalItemCount()) . " oglasa "
          ."<br>";
    echo "Strana: " . ($this->params["page"] > 1 ? $this->params["page"] : 1)
       . " od ". $this->paginator->count()
-      . "<br><br>";
+      . "<br>";
     
    if($current_page > 1)
    {
-      echo "<a title='Prva strana' href=\"". 
-         $this->url ( array_merge ( $this->params, array ('page' => 1 ) ) ) ."\">&laquo;&laquo; Prva</a>";
+      if($this->paginator->count() > 3)
+         echo "<a title='Prva strana' href=\"". 
+            $this->url ( array_merge ( $this->params, array ('page' => 1 ) ) ) ."\">&laquo;&laquo; Prva</a>";
           
       echo "<a title='Prethodna strana' href=\"". 
           $this->url ( array_merge ( $this->params, array ('page' => ($current_page - 1) ) ) ) ."\">&laquo; Prethodna</a>";
    }
    else 
    {
-      echo "<a title='Prva strana' style='color:black;'>&laquo;&laquo; Prva</a>";
-      echo "<a title='Prethodna strana' style='color:black;'>&laquo; Prethodna</a>";
+      if($this->paginator->count() > 3)
+         echo "<a title='Prva strana' style='color:#524E47;'>&laquo;&laquo; Prva</a>";
+      echo "<a title='Prethodna strana' style='color:#524E47;'>&laquo; Prethodna</a>";
    }
    
    if($current_page < $this->paginator->count())
    {
-       echo "<a title='Sledeća strana' href=\"". 
-          $this->url ( array_merge ( $this->params, array ('page' => ($current_page + 1) ) ) ) ."\">Sledeća &raquo;</a>";
-          
-        echo "<a title='Poslednja strana' href=\"". 
-          $this->url ( array_merge ( $this->params, array ('page' => $this->paginator->count() ) ) ) ."\">Poslednja &raquo;&raquo;</a>";
+      echo "<a title='Sledeća strana' href=\"". 
+         $this->url ( array_merge ( $this->params, array ('page' => ($current_page + 1) ) ) ) ."\">Sledeća &raquo;</a>";
+
+      if($this->paginator->count() > 3)
+         echo "<a title='Poslednja strana' href=\"". 
+            $this->url ( array_merge ( $this->params, array ('page' => $this->paginator->count() ) ) ) ."\">Poslednja &raquo;&raquo;</a>";
    }
    else
    {
-      echo "<a title='Sledeća strana' style='color:black;'>Sledeća &raquo;</a>";
-      echo "<a title='Poslednja strana' style='color:black;'>Poslednja &raquo;&raquo;</a>";
+      echo "<a title='Sledeća strana' style='color:#524E47;'>Sledeća &raquo;</a>";
+      if($this->paginator->count() > 3)
+         echo "<a title='Poslednja strana' style='color:#524E47;'>Poslednja &raquo;&raquo;</a>";
    }
-   echo "<br><br></div>";
+   echo "<br><br></div></div>";
    //ispis svih oglasa na strani
    echo $this->partialLoop ( 'partials/_page-oglasiprikaz.phtml', $this->paginator );
 	//ispis navigacije na dnu
