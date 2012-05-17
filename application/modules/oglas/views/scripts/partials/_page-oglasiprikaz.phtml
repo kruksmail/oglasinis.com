@@ -26,7 +26,7 @@ if( $this->escape ( $this->glavna_slika ) != $def_img
 {
 ?>
 <div class="gallery" id="gallery_<?php echo $this->id_oglasa; ?>">
-Slike:<br>
+<label style="font-size:14px;">Slike:</label>
 <ul>
 <?php 
    if($this->glavna_slika != $def_img)
@@ -50,7 +50,7 @@ Slike:<br>
    {
       $slika = $this->slika_dva;
       ?>
-       <li >
+       <li>
       <a href='<?php
       	echo $this->escape ( $this->baseUrl ( $slika ) );?>' title="Nis oglasi - <?php echo $this->escape ( $this->naslov )?>">
       <img title="Klikni za uvećanje"
@@ -67,7 +67,7 @@ Slike:<br>
    {
       $slika = $this->slika_tri;
       ?>
-       <li >
+       <li>
       <a href='<?php
       	echo $this->escape ( $this->baseUrl ( $slika ) );?>' title="Nis oglasi - <?php echo $this->escape ( $this->naslov )?>">
       <img title="Klikni za uvećanje"
@@ -85,7 +85,7 @@ Slike:<br>
       && ($this->escape ( $this->slika_dva ) != $def_img)
       && ($this->escape ( $this->slika_tri ) != $def_img) )
    {
-      $style4 = "style='margin-top:-17px;'";
+      $style4 = "style=''";
    }
    if($this->slika_cetri != $def_img)
    {
@@ -106,6 +106,7 @@ Slike:<br>
 ?>
 </ul>
 </div>
+<label style="width:100%; display:block; font-size:12px;">(Klikni na sliku za uvećanje)</label>
 <script type="text/javascript">
     $(function() {
         $('#gallery_<?php echo $this->id_oglasa; ?> a').lightBox();
@@ -136,7 +137,7 @@ Novo!</label>
 ?>
 
 <?php echo $this->partialLoop()->view->kategorije[$this->id_kategorije]; ?>,
-<?php echo $this->partialLoop()->view->podkategorije[$this->id_podkategorije]; ?>
+<?php echo $this->partialLoop()->view->podkategorije[$this->id_podkategorije]['label']; ?>
 <br><br>
 <?php
 if($this->adresa || $this->telefoni || $this->email || $this->sajt)
@@ -161,7 +162,7 @@ if(strtotime($this->datum_kreiranja))
 {
    $dat_kreiranja = strtotime($this->datum_kreiranja);
    echo "Oglas predat: " . date("d.m.Y H:i", $dat_kreiranja) ." h<br>";
-   echo "Oglas ističe: " . date("d.m.Y H:i", strtotime("+2 month") - (time() - $dat_kreiranja)) . " h<br>";
+   echo "Oglas ističe: " . date("d.m.Y", strtotime("+2 month") - (time() - $dat_kreiranja)) . " 23:59 h<br>";
 }
 ?>
 </p>

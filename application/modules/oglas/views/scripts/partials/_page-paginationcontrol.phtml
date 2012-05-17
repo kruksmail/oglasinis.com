@@ -1,11 +1,41 @@
 <div class="paginationControl_Oglas">
-Strana: <?php echo $this->current; ?> / <?php echo $this->pageCount; ?>
+Strana: <?php echo $this->current; ?> od <?php echo $this->pageCount; ?>
 <br>
+
 <?php
+if($this->current > 1)
+{
+   echo "<a title='Prva strana' href=\"". 
+      $this->url ( array_merge ( $this->params, array ('page' => 1 ) ) ) ."\">&laquo;&laquo; Prva</a>";
+       
+   echo "<a title='Prethodna strana' href=\"". 
+       $this->url ( array_merge ( $this->params, array ('page' => ($this->current - 1) ) ) ) ."\">&laquo; Prethodna</a>";
+}
+else 
+{
+   echo "<a title='Prva strana' style='color:black;'>&laquo;&laquo; Prva</a>";
+   echo "<a title='Prethodna strana' style='color:black;'>&laquo; Prethodna</a>";
+}
+
+if($this->current < $this->pageCount)
+{
+    echo "<a title='Sledeća strana' href=\"". 
+       $this->url ( array_merge ( $this->params, array ('page' => ($this->current + 1) ) ) ) ."\">Sledeća &raquo;</a>";
+       
+     echo "<a title='Poslednja strana' href=\"". 
+       $this->url ( array_merge ( $this->params, array ('page' => $this->pageCount ) ) ) ."\">Poslednja &raquo;&raquo;</a>";
+}
+else
+{
+   echo "<a title='Sledeća strana' style='color:black;'>Sledeća &raquo;</a>";
+   echo "<a title='Poslednja strana' style='color:black;'>Poslednja &raquo;&raquo;</a>";
+}
+
 
 if($this->pageCount > 1)
 {
 ?>
+<br><br>
 <!-- Numbered page links -->
 <?php
 	for ($page = 1; $page <= $this->pageCount; $page++)
@@ -25,7 +55,6 @@ if($this->pageCount > 1)
 		echo " ";
 		if($page < $this->pageCount)
 		   echo "| ";
-		
 	}
 }
 ?>

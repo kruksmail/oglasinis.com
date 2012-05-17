@@ -39,12 +39,12 @@ class Oglas_IndexController extends Oglas_Library_Controller_Action_Abstract
 		$kategorijeModel = new Kategorija_Model_Glavnekategorije();
       foreach ($kategorijeModel->getKategorije() as $katRow)
       {
-        $kategorije[$katRow["id"]] = $katRow["name"];
+         $kategorije[$katRow["id"]] = $katRow["name"];
       }
       $podkategorijaModel = new Kategorija_Model_Podkategorije();
       foreach ($podkategorijaModel->getPodkategorije() as $podkatRow)
       {
-        $podkategorije[$podkatRow["id"]] = $podkatRow["label"];
+         $podkategorije[$podkatRow["id"]] = $podkatRow;
       }
 
       unset($params);
@@ -128,12 +128,12 @@ class Oglas_IndexController extends Oglas_Library_Controller_Action_Abstract
 		$kategorijeModel = new Kategorija_Model_Glavnekategorije();
       foreach ($kategorijeModel->getKategorije() as $katRow)
       {
-        $kategorije[$katRow["id"]] = $katRow["name"];
+         $kategorije[$katRow["id"]] = $katRow["name"];
       }
       $podkategorijaModel = new Kategorija_Model_Podkategorije();
       foreach ($podkategorijaModel->getPodkategorije() as $podkatRow)
       {
-        $podkategorije[$podkatRow["id"]] = $podkatRow["label"];
+         $podkategorije[$podkatRow["id"]] = $podkatRow;
       }
 		$this->view->kategorije = $kategorije;
 		$this->view->podkategorije = $podkategorije;
@@ -202,13 +202,13 @@ class Oglas_IndexController extends Oglas_Library_Controller_Action_Abstract
 		}
 
 		$this->view->headTitle ()->prepend("$imekat ");
-		if($podkategorije[$params['oblast']])
+		if($podkategorije[$params['oblast']]['label'])
 		{
-		   $this->view->headMeta ()->prependName ( "Description", $podkategorije[$params['oblast']] ." ". $imekat 
+		   $this->view->headMeta ()->prependName ( "Description", $podkategorije[$params['oblast']]['label'] ." ". $imekat 
 		         . " Niš - Besplatni mali oglasi. Svi niški oglasi na jednom mestu. Dodjite, pronadjite, kupite, prodajte" );
       
-		   $this->view->headTitle ()->prepend($podkategorije[$params['oblast']]);
-		   $this->view->podkategorija = $podkategorije[$params['oblast']];
+		   $this->view->headTitle ()->prepend($podkategorije[$params['oblast']]['label']);
+		   $this->view->podkategorija = $podkategorije[$params['oblast']]['label'];
 		}
 		else
 		{

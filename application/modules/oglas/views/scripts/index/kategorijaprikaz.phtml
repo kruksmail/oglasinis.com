@@ -5,10 +5,11 @@
 	/* jQuery lightBox plugin - Gallery style */
 	.gallery {
 		float:left;
-		padding: 5px;
+		padding: 0px;
+		margin:0px;
 	}
-	.gallery ul { padding:0; list-style: none; }
-	.gallery ul li { display: inline; }
+	.gallery ul { padding:0px; margin:0px; list-style: none; }
+	.gallery ul li { display: inline;}
 	.gallery ul img {
 		border: 1px solid #3e3e3e;
 	}
@@ -18,9 +19,11 @@
 	}
 	.gallery ul a:hover { color: #fff; }
 </style>
-<h1><?php
+<h1>
+<?php
 echo ($this->podkategorija ? $this->podkategorija ." - " : "") . $this->kategorija ." - Oglasi Niš&nbsp;<br>";
-?></h1>
+?>
+</h1>
 <?php
 $dateTemp = new DateTime ( "", new DateTimeZone ( 'Europe/Belgrade' ) );
 $date = strtotime ( "+0 day", strtotime ( date ( $dateTemp->format ( 'd-m-Y' ) ) ) );
@@ -42,25 +45,77 @@ if ($this->paginator->count() > 0)
 ?>
 </div>
 <?php
+   //ispis podkategorija
+   foreach ($this->podkategorije as $id => $dbRow)
+   {
+      if($this->kategorijaID == $dbRow["kategorija"])
+      {
+         if($this->params["oblast"] == $id)
+         {
+            echo "<a style='color:#000;'>". $dbRow["label"] ."</a> ";
+         }
+         else
+         {
+            echo "<a href=\"{$this->baseUrl()}/oglasi/index/kategorija/{$this->kategorijaID}/oblast/{$id}\">". $dbRow["label"] ."</a> ";
+         }
+      }
+   }
+   if(count($this->podkategorije) > 0)
+      echo "<br><br>";
+   //ispis navigacije
+   $current_page = ($this->params["page"] ? $this->params["page"] : 1);
    echo  "<div class='paginationControl_Oglas'>"
-         ."Prikazano: ". ( ($this->params["page"] ? ($this->params["page"] - 1) : 0) * 10 + 1) 
-         ." - ". ( ($this->params["page"] ? ($this->params["page"] - 1) : 0)  * 10 + $this->paginator->getCurrentItemCount())
+         ."Prikazano: ". ( ($current_page - 1) * 10 + 1) 
+         ." - ". ( ($current_page - 1) * 10 + $this->paginator->getCurrentItemCount())
          . " od ". number_format($this->paginator->getTotalItemCount()) . " oglasa "
          ."<br>";
    echo "Strana: " . ($this->params["page"] > 1 ? $this->params["page"] : 1)
-      . " / ". $this->paginator->count()
-      . "<br></div><br>";
-      
+      . " od ". $this->paginator->count()
+      . "<br><br>";
+    
+   if($current_page > 1)
+   {
+      echo "<a title='Prva strana' href=\"". 
+         $this->url ( array_merge ( $this->params, array ('page' => 1 ) ) ) ."\">&laquo;&laquo; Prva</a>";
+          
+      echo "<a title='Prethodna strana' href=\"". 
+          $this->url ( array_merge ( $this->params, array ('page' => ($current_page - 1) ) ) ) ."\">&laquo; Prethodna</a>";
+   }
+   else 
+   {
+      echo "<a title='Prva strana' style='color:black;'>&laquo;&laquo; Prva</a>";
+      echo "<a title='Prethodna strana' style='color:black;'>&laquo; Prethodna</a>";
+   }
+   
+   if($current_page < $this->paginator->count())
+   {
+       echo "<a title='Sledeća strana' href=\"". 
+          $this->url ( array_merge ( $this->params, array ('page' => ($current_page + 1) ) ) ) ."\">Sledeća &raquo;</a>";
+          
+        echo "<a title='Poslednja strana' href=\"". 
+          $this->url ( array_merge ( $this->params, array ('page' => $this->paginator->count() ) ) ) ."\">Poslednja &raquo;&raquo;</a>";
+   }
+   else
+   {
+      echo "<a title='Sledeća strana' style='color:black;'>Sledeća &raquo;</a>";
+      echo "<a title='Poslednja strana' style='color:black;'>Poslednja &raquo;&raquo;</a>";
+   }
+   echo "<br><br></div>";
+   //ispis svih oglasa na strani
    echo $this->partialLoop ( 'partials/_page-oglasiprikaz.phtml', $this->paginator );
-	echo $this->paginationControl ( $this->paginator, 'Sliding', 'partials/_page-paginationcontrol.phtml', array("params" => $this->params) );
+	//ispis navigacije na dnu
+   echo $this->paginationControl ( $this->paginator, 'Sliding', 'partials/_page-paginationcontrol.phtml', array("params" => $this->params) );
 
-} else {
-	?>
-	<div class="formaKriterijumi_Oglas">
+} 
+else 
+{
+?>
+<div class="formaKriterijumi_Oglas">
 <?php
 	echo $this->searchForm;
-	?></div>
-		<br>
+?>
+</div>
+<br>
 <?php if($_POST){?>
 <h2>Nema oglasa za izabrane kriterijume</h2>
 <?php }else{?>
@@ -71,17 +126,3 @@ if ($this->paginator->count() > 0)
    }
 }
 ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-

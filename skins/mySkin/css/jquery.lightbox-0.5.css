@@ -57,11 +57,12 @@
 #lightbox-container-image-box > #lightbox-nav { left: 0; }
 #lightbox-nav a { outline: none;}
 #lightbox-nav-btnPrev, #lightbox-nav-btnNext {
-	width: 39%;
+	width: 40%;
 	height: 100%;
 	zoom: 1;
 	display: block;
 }
+
 #lightbox-nav-btnPrev { 
 	left: 0; 
 	float: left;
