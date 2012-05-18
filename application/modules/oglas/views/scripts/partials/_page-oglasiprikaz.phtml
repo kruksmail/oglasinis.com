@@ -162,7 +162,7 @@ if(strtotime($this->datum_kreiranja))
 {
    $dat_kreiranja = strtotime($this->datum_kreiranja);
    echo "Oglas predat: " . date("d.m.Y H:i", $dat_kreiranja) ." h<br>";
-   echo "Oglas ističe: " . date("d.m.Y", strtotime("+2 month") - (time() - $dat_kreiranja)) . " 23:59 h<br>";
+   echo "Oglas ističe: " . date("d.m.Y", strtotime("+2 month", $dat_kreiranja)) . " 23:59 h<br>";
 }
 ?>
 </p>
