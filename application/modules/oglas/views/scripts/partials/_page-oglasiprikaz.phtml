@@ -149,7 +149,7 @@ if( $this->telefoni )
 if( $this->email )
    echo "Email: <a href='mailto:". $this->escape ( $this->email ) ."'>". htmlspecialchars($this->email) . "</a><br>";
 
-if( $this->sajt )
+if( $this->sajt && !(strstr($this->sajt,"oglasinis.com")))
    echo "Web sajt: <a href='http://" . $this->escape ( $this->sajt ) . "'>" . htmlspecialchars($this->sajt) . "</a><br>";   
    
 if($this->adresa)
