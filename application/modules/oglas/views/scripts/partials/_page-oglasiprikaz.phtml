@@ -31,11 +31,17 @@ if( $this->escape ( $this->glavna_slika ) != $def_img
 <?php 
    if($this->glavna_slika != $def_img)
    {
-      $slika = $this->glavna_slika;
+      $thumb = $this->glavna_slika . ".thumb.jpg";
+      
+      if(is_file(APP_PUBLIC . $thumb))
+         $slika = $thumb;
+      else 
+         $slika = $this->glavna_slika;
+      
       ?>
         <li>
          <a href='<?php
-         	echo $this->escape ( $this->baseUrl ( $slika ) );?>' title="Nis oglasi - <?php echo $this->escape ( $this->naslov )?>">
+         	echo $this->escape ( $this->baseUrl ( $this->glavna_slika ) );?>' title="Nis oglasi - <?php echo $this->escape ( $this->naslov )?>">
          <img title="Klikni za uvećanje"
          	alt="Nis oglasi - <?php
          	echo $this->escape ( $this->naslov )?>"
@@ -48,11 +54,15 @@ if( $this->escape ( $this->glavna_slika ) != $def_img
     
    if($this->slika_dva != $def_img)
    {
-      $slika = $this->slika_dva;
+      $thumb = $this->slika_dva . ".thumb.jpg";
+      if(is_file(APP_PUBLIC . $thumb))
+         $slika = $thumb;
+      else 
+         $slika = $this->slika_dva;
       ?>
        <li>
       <a href='<?php
-      	echo $this->escape ( $this->baseUrl ( $slika ) );?>' title="Nis oglasi - <?php echo $this->escape ( $this->naslov )?>">
+      	echo $this->escape ( $this->baseUrl ( $this->slika_dva ) );?>' title="Nis oglasi - <?php echo $this->escape ( $this->naslov )?>">
       <img title="Klikni za uvećanje"
       	alt="Nis oglasi - <?php
       	echo $this->escape ( $this->naslov )?>"
@@ -65,11 +75,15 @@ if( $this->escape ( $this->glavna_slika ) != $def_img
 
    if($this->slika_tri != $def_img)
    {
-      $slika = $this->slika_tri;
+      $thumb = $this->slika_tri . ".thumb.jpg";
+      if(is_file(APP_PUBLIC . $thumb))
+         $slika = $thumb;
+      else 
+         $slika = $this->slika_tri;
       ?>
        <li>
       <a href='<?php
-      	echo $this->escape ( $this->baseUrl ( $slika ) );?>' title="Nis oglasi - <?php echo $this->escape ( $this->naslov )?>">
+      	echo $this->escape ( $this->baseUrl ( $this->slika_tri ) );?>' title="Nis oglasi - <?php echo $this->escape ( $this->naslov )?>">
       <img title="Klikni za uvećanje"
       	alt="Nis oglasi - <?php
       	echo $this->escape ( $this->naslov )?>"
@@ -89,11 +103,15 @@ if( $this->escape ( $this->glavna_slika ) != $def_img
    }
    if($this->slika_cetri != $def_img)
    {
-      $slika = $this->slika_cetri;
+      $thumb = $this->slika_cetri . ".thumb.jpg";
+      if(is_file(APP_PUBLIC . $thumb))
+         $slika = $thumb;
+      else 
+         $slika = $this->slika_cetri;
       ?>
        <li>
       <a href='<?php
-      	echo $this->escape ( $this->baseUrl ( $slika ) );?>' title="Nis oglasi - <?php echo $this->escape ( $this->naslov )?>">
+      	echo $this->escape ( $this->baseUrl ( $this->slika_cetri ) );?>' title="Nis oglasi - <?php echo $this->escape ( $this->naslov )?>">
       <img  <?php echo $style4;?> title="Klikni za uvećanje"
       	alt="Nis oglasi - <?php
       	echo $this->escape ( $this->naslov )?>"

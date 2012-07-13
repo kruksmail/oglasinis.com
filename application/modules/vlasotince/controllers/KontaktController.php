@@ -22,7 +22,7 @@ class KontaktController extends Vlasotince_Library_Controller_Action_Abstract
 				$mail = new Zend_Mail ();
 				$mail->setSubject ( $subject );
 				$mail->setFrom ( $email, $sender );
-				$mail->addTo ( 'oglasisnis@gmail.com', 'webmaster' );
+				$mail->addTo ( 'oglasinis@gmail.com', 'webmaster' );
 				$mail->setBodyHtml ( $htmlMessage );
 				$mail->setBodyText ( $message );
 				$result = $mail->send ();

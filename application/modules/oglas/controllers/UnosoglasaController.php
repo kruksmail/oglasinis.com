@@ -99,23 +99,55 @@ class Oglas_UnosoglasaController extends Oglas_Library_Controller_Action_Abstrac
 					
 					if ($formaUnosOglasa->glavnaslika->isUploaded ()) {
 						$formaUnosOglasa->glavnaslika->receive ();
+						
+						$img_filename = APP_PUBLIC . '/images/upload/slikeoglasa/' . basename ( $formaUnosOglasa->glavnaslika->getFileName () );
+						$new_filename = APP_PUBLIC . '/images/upload/slikeoglasa/' . basename ( $formaUnosOglasa->glavnaslika->getFileName () );
+						
+						$new_filename = $new_filename . ".thumb.jpg";
+						
+						$this->convertImage($img_filename, $new_filename);
+						
 						$slika [$i] = '/images/upload/slikeoglasa/' . basename ( $formaUnosOglasa->glavnaslika->getFileName () );
-						$i ++;
+						$i++;
 					}
 					if ($formaUnosOglasa->slika2->isUploaded ()) {
 						$formaUnosOglasa->slika2->receive ();
+						
+						$img_filename = APP_PUBLIC . '/images/upload/slikeoglasa/' . basename ( $formaUnosOglasa->slika2->getFileName () );
+                  $new_filename = APP_PUBLIC . '/images/upload/slikeoglasa/' . basename ( $formaUnosOglasa->slika2->getFileName () );
+						
+                  $new_filename = $new_filename . ".thumb.jpg";
+						
+					   $this->convertImage($img_filename, $new_filename);
+						
 						$slika [$i] = '/images/upload/slikeoglasa/' . basename ( $formaUnosOglasa->slika2->getFileName () );
-						$i ++;
+						$i++;
 					}
 					if ($formaUnosOglasa->slika3->isUploaded ()) {
 						$formaUnosOglasa->slika3->receive ();
+					
+						$img_filename = APP_PUBLIC . '/images/upload/slikeoglasa/' . basename ( $formaUnosOglasa->slika3->getFileName () );
+                  $new_filename = APP_PUBLIC . '/images/upload/slikeoglasa/' . basename ( $formaUnosOglasa->slika3->getFileName () );
+						
+                  $new_filename = $new_filename . ".thumb.jpg";
+                  
+					   $this->convertImage($img_filename, $new_filename);
+						
 						$slika [$i] = '/images/upload/slikeoglasa/' . basename ( $formaUnosOglasa->slika3->getFileName () );
-						$i ++;
+						$i++;
 					}
 					if ($formaUnosOglasa->slika4->isUploaded ()) {
 						$formaUnosOglasa->slika4->receive ();
+						
+						$img_filename = APP_PUBLIC . '/images/upload/slikeoglasa/' . basename ( $formaUnosOglasa->slika4->getFileName () );
+                  $new_filename = APP_PUBLIC . '/images/upload/slikeoglasa/' . basename ( $formaUnosOglasa->slika4->getFileName () );
+						
+                  $new_filename = $new_filename . ".thumb.jpg";
+                  
+						$this->convertImage($img_filename, $new_filename);
+						
 						$slika [$i] = '/images/upload/slikeoglasa/' . basename ( $formaUnosOglasa->slika4->getFileName () );
-						$i ++;
+						$i++;
 					}
 					//$_SESSION ["slika"] = $slika;
 					
@@ -190,6 +222,30 @@ class Oglas_UnosoglasaController extends Oglas_Library_Controller_Action_Abstrac
 				$this->view->podkategorije [$kategorija->name] = $podkategorije;
 			}
 		}
+	}
+	
+	private function convertImage($img_filename, $new_filename)
+	{
+	   if(!is_file($img_filename))
+	   {
+	      print "Error: $img_filename is not file!<br>";
+	      return false;
+	   }
+	      
+      list($width, $height) = getimagesize($img_filename);
+      $newwidth = 80;
+      $newheight = 80;
+      // Load
+      $thumb = imagecreatetruecolor($newwidth, $newheight);
+      $source = imagecreatefromjpeg($img_filename);
+      
+      // Resize
+      $ret = imagecopyresized($thumb, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
+      if(!$ret)
+         return false;
+         
+      return imagejpeg($thumb, $new_filename);
+      
 	}
 
 }
