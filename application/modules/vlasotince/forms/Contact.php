@@ -16,6 +16,8 @@ class Vlasotince_Form_Contact extends Zend_Form
 		$name->addValidator ( $naslovValdidator );
 		$name->addFilter ( 'StripTags' )->addFilter ( 'StringTrim' );
 		$name->setAttrib ( 'size', '40' );
+		$name->setAttrib ( 'id', '' );
+		$name->setAttrib ( 'style', 'width:250px;' );
 		$name->addErrorMessage ( 'Nevalidan unos!' );
 		$this->addElement ( $name );
 		
@@ -23,6 +25,8 @@ class Vlasotince_Form_Contact extends Zend_Form
 		$email->setLabel ( 'Vaš email:' );
 		$email->setRequired ( TRUE );
 		$email->setAttrib ( 'size', '40' );
+		$email->setAttrib ( 'id', '' );
+		$email->setAttrib ( 'style', 'width:250px;' );
 		$email->addValidator ( 'EmailAddress' );
 		$email->addErrorMessage ( 'Nevalidan unos!' );
 		$this->addElement ( $email );
@@ -30,7 +34,9 @@ class Vlasotince_Form_Contact extends Zend_Form
 		$subject = $this->createElement ( 'text', 'subject' );
 		$subject->setLabel ( 'Tema: ' );
 		$subject->setRequired ( TRUE );
-		$subject->setAttrib ( 'size', '60' );
+		$subject->setAttrib ( 'size', '40' );
+		$subject->setAttrib ( 'id', '' );
+		$subject->setAttrib ( 'style', 'width:250px;' );
 		$subject->addValidator ( $naslovValdidator );
 		$subject->addFilter ( 'StripTags' )->addFilter ( 'StringTrim' );
 		$subject->addErrorMessage ( 'Nevalidan unos!' );

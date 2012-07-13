@@ -8,12 +8,12 @@ array('kategorija'=> $this->kategorija, 'podkategorija' => $this->podkategorija)
 ?>
 <?php if($this->messageProcessed && $this->sendMsg){ ?>
 	<p>
-		Sorry, there is error on application. You can contact as directly on
-		email:<strong>kruksmail@gmail.com</strong> for more information.
+		Do�lo je do greške. Kontaktirajte nas direktno na
+		email: <a href='mailto:oglasinis@gmail.com'>oglasinis@gmail.com</a>
 	</p>
 	<?php } elseif(!$this->messageProcessed && $this->sendMsg) {?>
-	<p>Thank you for contact as.</p>
+	<p>Hvala. Uspešno ste poslali poruku.</p>
 	<?php } else {?>
-	<p>Fill fields and click the "Send message"</p>
+	<p>Popunite polja i kliknite na "Pošalji poruku"</p>
 	<?php echo $this->form; } ?>
 	<div class="clear"></div>

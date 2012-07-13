@@ -28,7 +28,7 @@ class Oglas_IndexController extends Oglas_Library_Controller_Action_Abstract
 	{
 		$this->view->headMeta ()->prependName ( "Description", "Oglasi Niš. Svi niški oglasi na jednom mestu. Pronadjite, kupite, prodajte" );
 		$searchForm = new Oglas_Form_Search ();
-		$this->view->headTitle ()->append ( 'Besplatni mali oglasi Niš. Svi niški oglasi na jednom mestu' );
+		$this->view->headTitle ()->append ( 'Svi niški oglasi na jednom mestu' );
 	
 		$oglasModel = new Oglas_Model_Oglas ();
 		$countModel = new Oglas_Model_Oglas ();
@@ -216,14 +216,14 @@ class Oglas_IndexController extends Oglas_Library_Controller_Action_Abstract
 		if($podkategorije[$params['oblast']]['label'])
 		{
 		   $this->view->headMeta ()->prependName ( "Description", $podkategorije[$params['oblast']]['label'] ." ". $imekat 
-		         . " Niš - Besplatni mali oglasi. Svi niški oglasi na jednom mestu. Dodjite, pronadjite, kupite, prodajte" );
+		         . " Niš - Svi niški oglasi na jednom mestu. Dodjite, pronadjite, kupite, prodajte" );
       
 		   $this->view->headTitle ()->prepend($podkategorije[$params['oblast']]['label']);
 		   $this->view->podkategorija = $podkategorije[$params['oblast']]['label'];
 		}
 		else
 		{
-		   $this->view->headMeta ()->prependName ( "Description", $imekat . " Niš - Besplatni mali oglasi. Svi niški oglasi na jednom mestu. Dodjite, pronadjite, kupite, prodajte" );
+		   $this->view->headMeta ()->prependName ( "Description", $imekat . " Niš - Svi niški oglasi na jednom mestu. Dodjite, pronadjite, kupite, prodajte" );
 		   $this->view->podkategorija = "";
 		}
 		$this->view->params = $params;
@@ -238,7 +238,7 @@ class Oglas_IndexController extends Oglas_Library_Controller_Action_Abstract
 		$this->view->searchForm = $searchForm;
 
 		
-		$this->view->headTitle ()->append ( 'Besplatni mali oglasi Niš. Svi niški oglasi na jednom mestu' );
+		$this->view->headTitle ()->append ( 'Svi niški oglasi na jednom mestu' );
 	}
 	/*
 	public function kategorijapodkategorijaprikazAction() {
