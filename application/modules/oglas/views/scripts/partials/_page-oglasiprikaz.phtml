@@ -1,9 +1,6 @@
 
 <div class="featuredItem_Oglas">
-<h2 class="naslovPrikaz_Oglas"><a title="Nis oglasi - <?php
-	echo $this->escape ( $this->naslov )?>" style="text-align:left;"><?php
-echo $this->escape ( ucfirst($this->naslov) );
-?></a></h2>
+<h2 class="naslovPrikaz_Oglas"><?php echo $this->escape ( ucfirst($this->naslov) ); ?></h2>
 
 <div class="cenaPrikazMali_Oglas" style="display:block; margin-right:20px;">
 <?php
@@ -189,3 +186,46 @@ if(strtotime($this->datum_kreiranja))
 </div>
 </div>
 
+<?php 
+
+   if( ( ($this->partialLoop()->view->currentItemCount == $this->partialLoop()->view->itemCountPerPage) 
+      && ($this->partialCounter == intval($this->partialLoop()->view->itemCountPerPage/2)) )
+      || ( $this->partialLoop()->view->currentItemCount == $this->partialCounter )
+       )
+   {
+?>
+<div class="featuredItem_Oglas">
+<h2 class="naslovPrikaz_Oglas">Google Oglasi</h2>
+<br>
+<div  style="display:block; float:left; width:440px; color:black; line-height:normal; margin:5px;padding:3px; font-size:14px; text-align:center;">
+&nbsp;
+<?php if( $this->partialLoop()->view->currentItemCount == $this->partialCounter ){?>
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-6886463345124445";
+/* donji sredina */
+google_ad_slot = "1031504405";
+google_ad_width = 336;
+google_ad_height = 280;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<?php }else{?>
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-6886463345124445";
+/* srednji sredina */
+google_ad_slot = "4124571602";
+google_ad_width = 336;
+google_ad_height = 280;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<?php }?>
+</div>
+</div>
+<?php 
+   }
+?>

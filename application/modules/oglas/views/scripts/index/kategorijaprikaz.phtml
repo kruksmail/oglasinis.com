@@ -69,8 +69,9 @@ if ($this->paginator->count() > 0)
       echo "</div>";
    //ispis navigacije
    $current_page = ($this->params["page"] ? $this->params["page"] : 1);
-   echo  "<div class='paginationControl_Oglas' style='float:left;text-align:center;'><br>Prikazano: ". ( ($current_page - 1) * 10 + 1) 
-         ." - ". ( ($current_page - 1) * 10 + $this->paginator->getCurrentItemCount())
+   echo  "<div class='paginationControl_Oglas' style='float:left;text-align:center;'><br>Prikazano: ". 
+               ( ($current_page - 1) * $this->paginator->getItemCountPerPage() + 1) 
+         ." - ". ( ($current_page - 1) * $this->paginator->getItemCountPerPage() + $this->paginator->getCurrentItemCount())
          . " od ". number_format($this->paginator->getTotalItemCount()) . " oglasa "
          ."<br>";
    echo "Strana: " . ($this->params["page"] > 1 ? $this->params["page"] : 1)
@@ -109,6 +110,10 @@ if ($this->paginator->count() > 0)
          echo "<a title='Poslednja strana' style='color:#524E47;'>Poslednja &raquo;&raquo;</a>";
    }
    echo "<br><br></div></div>";
+
+   $this->currentItemCount = $this->paginator->getCurrentItemCount();
+   $this->itemCountPerPage = $this->paginator->getItemCountPerPage();
+   
    //ispis svih oglasa na strani
    echo $this->partialLoop ( 'partials/_page-oglasiprikaz.phtml', $this->paginator );
 	//ispis navigacije na dnu

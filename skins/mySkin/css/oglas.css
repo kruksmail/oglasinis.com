@@ -109,7 +109,7 @@ a .slikaLink_Oglas {
 	background: url('../images/returned.jpg') repeat center top;
 }
 
-.naslovPrikaz_Oglas a {
+.naslovPrikaz_Oglas {
 	clear: both;
 	padding: 2px 5px;
 	margin: 5px;

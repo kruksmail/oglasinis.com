@@ -43,8 +43,8 @@ if ($this->paginator->count() > 0)
    $current_page = ($current_page > $this->paginator->count() ? $this->paginator->count() : $current_page);
    
    echo  "<div class='paginationControl_Oglas'>"
-         ."Prikazano: ". ( ($current_page - 1) * 10 + 1) 
-         ." - ". ( ($current_page - 1) * 10 + $this->paginator->getCurrentItemCount())
+         ."Prikazano: ". ( ($current_page - 1) * $this->paginator->getItemCountPerPage() + 1) 
+         ." - ". ( ($current_page - 1) * $this->paginator->getItemCountPerPage() + $this->paginator->getCurrentItemCount())
          . " od ". number_format($this->paginator->getTotalItemCount()) . " oglasa "
          ."<br>";
    echo "Strana: " . $current_page
@@ -85,6 +85,9 @@ if ($this->paginator->count() > 0)
    }
 
    echo "<br><br></div>";
+
+   $this->currentItemCount = $this->paginator->getCurrentItemCount();
+   $this->itemCountPerPage = $this->paginator->getItemCountPerPage();
    
    echo $this->partialLoop ( 'partials/_page-oglasiprikaz.phtml', $this->paginator );
 	echo $this->paginationControl ( $this->paginator, 'Sliding', 'partials/_page-paginationcontrol.phtml', array("params" => $this->params) );
